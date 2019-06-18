@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "facing=north,side=left": {
+      "model": "habitus:block/butcher_table",
+      "uvlock": true
+    },
+    "facing=south,side=left": {
+      "model": "habitus:block/butcher_table",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=west,side=left": {
+      "model": "habitus:block/butcher_table",
+      "y": 270,
+      "uvlock": true
+    },
+    "facing=east,side=left": {
+      "model": "habitus:block/butcher_table",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=north,side=right": {
+      "model": "habitus:block/butcher_table",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=south,side=right": {
+      "model": "habitus:block/butcher_table",
+      "uvlock": true
+    },
+    "facing=west,side=right": {
+      "model": "habitus:block/butcher_table",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=east,side=right": {
+      "model": "habitus:block/butcher_table",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}
