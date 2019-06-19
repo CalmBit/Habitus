@@ -8,22 +8,26 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class Corpse extends ForgeRegistryEntry<Corpse> {
     public final Class<? extends LivingEntity> wrappedEntityClass;
-    public final Class<? extends EntityRenderer> rendererClass;
     public final VisceraType visceraType;
 
+    @OnlyIn(Dist.CLIENT)
+    public Class<? extends EntityRenderer> rendererClass;
+
     public Corpse(Class<? extends LivingEntity> wrappedEntityClass,
-                  Class<? extends EntityRenderer> rendererClass,
                   VisceraType visceraType) {
         this.wrappedEntityClass = wrappedEntityClass;
-        this.rendererClass = rendererClass;
         this.visceraType = visceraType;
     }
 
-    public void setupRenderer(EntityRendererManager manager) {
+    @OnlyIn(Dist.CLIENT)
+    public void setupRenderer(Class<? extends EntityRenderer> rendererClass, EntityRendererManager manager) {
+        this.rendererClass = rendererClass;
         CorpseRendererCache.cacheRenderer(wrappedEntityClass, manager.entityRenderMap.get(wrappedEntityClass));
     }
 

@@ -9,12 +9,14 @@ import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.SheepEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 
 public class HSCorpses {
-    public static final Corpse PIG_CORPSE = new Corpse(PigEntity.class, PigRenderer.class, VisceraType.VISCERA_QUADRAPED);
-    public static final Corpse SHEEP_CORPSE = new Corpse(SheepEntity.class, SheepRenderer.class, VisceraType.VISCERA_QUADRAPED);
-    public static final Corpse COW_CORPSE = new Corpse(CowEntity.class, CowRenderer.class, VisceraType.VISCERA_QUADRAPED);
+    public static final Corpse PIG_CORPSE = new Corpse(PigEntity.class, VisceraType.VISCERA_QUADRAPED);
+    public static final Corpse SHEEP_CORPSE = new Corpse(SheepEntity.class, VisceraType.VISCERA_QUADRAPED);
+    public static final Corpse COW_CORPSE = new Corpse(CowEntity.class, VisceraType.VISCERA_QUADRAPED);
 
     public static void registerCorpses(RegistryEvent.Register<Corpse> evt) {
         evt.getRegistry().registerAll(
@@ -24,6 +26,7 @@ public class HSCorpses {
         );
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static void setupRenderers(EntityRendererManager manager) {
         PIG_CORPSE.setupRenderer(manager);
         SHEEP_CORPSE.setupRenderer(manager);

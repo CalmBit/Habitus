@@ -6,9 +6,12 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
+@OnlyIn(Dist.CLIENT)
 public class CorpseRenderer extends LivingRenderer<CorpseEntity, QuadrupedModel<CorpseEntity>> {
     public CorpseRenderer(EntityRendererManager p_i50965_1_) {
         super(p_i50965_1_, new BlankModel(), 0.0f);
