@@ -1,9 +1,9 @@
 package com.tridevmc.habitus.entity;
 
 import com.tridevmc.habitus.init.HSEntities;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
@@ -91,6 +91,8 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
             type = t.get();
             corpse = (LivingEntity) type.create(this.world);
             corpse.deserializeNBT(entityTag);
+            corpse.prevRenderYawOffset = corpse.renderYawOffset;
+            corpse.prevRotationYawHead = corpse.rotationYawHead;
         }
     }
 
