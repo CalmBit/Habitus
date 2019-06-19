@@ -1,0 +1,23 @@
+{
+  "entity.wasted.ambient": {
+    "sounds": [
+      "habitus:wasted_say1",
+      "habitus:wasted_say2",
+      "habitus:wasted_say3"
+    ],
+    "subtitle": "habitus.subtitles.entity.wasted.ambient"
+  },
+  "entity.wasted.death": {
+    "sounds": [
+      "habitus:wasted_death"
+    ],
+    "subtitle": "habitus.subtitles.entity.wasted.death"
+  },
+  "entity.wasted.hurt": {
+    "sounds": [
+      "habitus:wasted_hurt1",
+      "habitus:wasted_hurt2"
+    ],
+    "subtitle": "habitus.subtitles.entity.wasted.hurt"
+  }
+}

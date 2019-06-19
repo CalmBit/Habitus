@@ -1,9 +1,7 @@
 package com.tridevmc.habitus;
 
 import com.tridevmc.habitus.entity.CorpseEntity;
-import com.tridevmc.habitus.init.HSBlocks;
-import com.tridevmc.habitus.init.HSCorpses;
-import com.tridevmc.habitus.init.HSEntities;
+import com.tridevmc.habitus.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityType;
@@ -12,14 +10,18 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -63,6 +65,7 @@ public class Habitus
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        HSBiomes.setupBiomes();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -71,7 +74,7 @@ public class Habitus
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        HSCorpses.setupRenderers(Minecraft.getInstance().getRenderManager());
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> HSCorpses.setupRenderers(Minecraft.getInstance().getRenderManager()));
     }
 
     private void processIMC(final InterModProcessEvent event)
@@ -135,6 +138,21 @@ public class Habitus
             HSEntities.registerEntities(evt);
         }
 
+        @SubscribeEvent
+        public static void onBiomeRegistry(final RegistryEvent.Register<Biome> evt) {
+            HSBiomes.registerBiomes(evt);
+            BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(HSBiomes.DEAD_FOREST, 10));
+        }
+
+        @SubscribeEvent
+        public static void onFeatureRegistry(final RegistryEvent.Register<Feature<?>> evt) {
+            HSBiomes.registerFeatures(evt);
+        }
+
+        @SubscribeEvent
+        public static void onSoundEventRegistry(final RegistryEvent.Register<SoundEvent> evt) {
+            HSSounds.registerSoundEvents(evt);
+        }
         @SubscribeEvent
         public static void onRegistryCreation(final RegistryEvent.NewRegistry evt) {
             new RegistryBuilder()
