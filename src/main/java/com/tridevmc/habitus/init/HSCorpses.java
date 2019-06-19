@@ -28,8 +28,8 @@ public class HSCorpses {
 
     @OnlyIn(Dist.CLIENT)
     public static void setupRenderers(EntityRendererManager manager) {
-        PIG_CORPSE.setupRenderer(manager);
-        SHEEP_CORPSE.setupRenderer(manager);
-        COW_CORPSE.setupRenderer(manager);
+        PIG_CORPSE.setupRenderer(PigRenderer.class, manager);
+        SHEEP_CORPSE.setupRenderer(SheepRenderer.class, manager);
+        COW_CORPSE.setupRenderer(CowRenderer.class, manager);
     }
 }
