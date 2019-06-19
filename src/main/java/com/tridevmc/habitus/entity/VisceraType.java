@@ -1,6 +1,6 @@
 package com.tridevmc.habitus.entity;
 
-public enum EnumVisceraType {
+public enum VisceraType {
     VISCERA_QUADRAPED,
     VISCERA_BIPED,
     VISCERA_ARTHROPOD,

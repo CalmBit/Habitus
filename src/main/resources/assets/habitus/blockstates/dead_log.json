@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":    { "model": "habitus:block/dead_log" },
+    "axis=z":     { "model": "habitus:block/dead_log", "x": 90 },
+    "axis=x":     { "model": "habitus:block/dead_log", "x": 90, "y": 90 }
+  }
+}

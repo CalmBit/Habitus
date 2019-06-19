@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "name": "habitus:butcher_table",
       "rolls": 1,
       "entries": [
         {

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BlockButcherTable extends HorizontalBlock {
+public class ButcherTableBlock extends HorizontalBlock {
 
     public static final EnumProperty<ButcherTableSide> SIDE = EnumProperty.create("side", ButcherTableSide.class);
 
@@ -37,7 +37,7 @@ public class BlockButcherTable extends HorizontalBlock {
         return BlockRenderLayer.CUTOUT;
     }
 
-    public BlockButcherTable() {
+    public ButcherTableBlock() {
         super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
@@ -104,7 +104,7 @@ public class BlockButcherTable extends HorizontalBlock {
 
     }
 
-    @Override
+    /*@Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return HSBlocks.ITEM_BUTCHER_TABLE.getDefaultInstance();
     }
@@ -114,5 +114,5 @@ public class BlockButcherTable extends HorizontalBlock {
         return Collections.singletonList(state.get(SIDE) == ButcherTableSide.LEFT ?
                 HSBlocks.ITEM_BUTCHER_TABLE.getDefaultInstance()
                 : Items.AIR.getDefaultInstance());
-    }
+    }*/
 }

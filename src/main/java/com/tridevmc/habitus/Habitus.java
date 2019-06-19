@@ -1,10 +1,11 @@
 package com.tridevmc.habitus;
 
-import com.tridevmc.habitus.entity.EntityCorpse;
+import com.tridevmc.habitus.entity.CorpseEntity;
 import com.tridevmc.habitus.init.HSBlocks;
 import com.tridevmc.habitus.init.HSCorpses;
 import com.tridevmc.habitus.init.HSEntities;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -68,7 +69,7 @@ public class Habitus
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-
+        HSCorpses.setupRenderers(Minecraft.getInstance().getRenderManager());
     }
 
     private void processIMC(final InterModProcessEvent event)
@@ -85,8 +86,7 @@ public class Habitus
             if(corpseRegistry != null) {
                 Corpse c = corpseRegistry.getValue(evt.getEntity().getType().getRegistryName());
                 if(c != null) {
-                    EntityCorpse corpse = c.createEntity(ent, ent.world);
-                    corpse.copyEntityData(ent);
+                    CorpseEntity corpse = c.createEntity(ent, ent.world);
                     ent.remove();
                 }
             }
