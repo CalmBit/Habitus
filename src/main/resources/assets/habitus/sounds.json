@@ -1,5 +1,6 @@
 {
   "entity.wasted.ambient": {
+    "category": "hostile",
     "sounds": [
       "habitus:wasted_say1",
       "habitus:wasted_say2",
@@ -8,16 +9,252 @@
     "subtitle": "habitus.subtitles.entity.wasted.ambient"
   },
   "entity.wasted.death": {
+    "category": "hostile",
     "sounds": [
       "habitus:wasted_death"
     ],
     "subtitle": "habitus.subtitles.entity.wasted.death"
   },
   "entity.wasted.hurt": {
+    "category": "hostile",
     "sounds": [
       "habitus:wasted_hurt1",
       "habitus:wasted_hurt2"
     ],
     "subtitle": "habitus.subtitles.entity.wasted.hurt"
+  },
+  "music_disc.calm1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/calm1",
+        "stream": true
+      }
+    ]
+  },
+  "music_dist.calm2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/calm2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.calm3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/calm3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.hal1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/hal1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.hal2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/hal2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.hal3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/hal3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.hal4": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/hal4",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nuance1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nuance1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nuance2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nuance2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.piano1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/piano1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.piano2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/piano2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.piano3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/piano3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.menu1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/menu/menu1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.menu2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/menu/menu2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.menu3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/menu/menu3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.menu4": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/menu/menu4",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nether1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nether/nether1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nether2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nether/nether2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nether3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nether/nether3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.nether4": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/nether/nether4",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative1": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative1",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative2": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative3": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative3",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative4": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative4",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative5": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative5",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.creative6": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "music/game/creative/creative6",
+        "stream": true
+      }
+    ]
   }
 }

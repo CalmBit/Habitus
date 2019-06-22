@@ -1,14 +1,12 @@
 package com.tridevmc.habitus.entity;
 
 import com.tridevmc.habitus.init.HSEntities;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -64,8 +62,8 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
     @Override
     public void tick() {
         super.tick();
-        if(this.deathTime != 20) {
-            ++this.deathTime;
+        if(corpse.deathTime != 20) {
+            ++corpse.deathTime;
         }
     }
 
@@ -83,6 +81,11 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
     public void readSpawnData(PacketBuffer buffer) {
         CompoundNBT entityTag = buffer.readCompoundTag();
         setupCorpseEntity(entityTag);
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox() {
+        return corpse.getBoundingBox();
     }
 
     public void setupCorpseEntity(CompoundNBT entityTag) {

@@ -3,8 +3,11 @@ package com.tridevmc.habitus.init;
 import com.tridevmc.habitus.Habitus;
 import com.tridevmc.habitus.entity.CorpseEntity;
 import com.tridevmc.habitus.entity.WastedEntity;
+import com.tridevmc.habitus.entity.WoodbugEntity;
 import com.tridevmc.habitus.entity.render.CorpseRenderer;
 import com.tridevmc.habitus.entity.render.WastedRenderer;
+import com.tridevmc.habitus.entity.render.WoodbugRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
@@ -34,18 +37,32 @@ public class HSEntities {
             .build("habitus:wasted")
             .setRegistryName(Habitus.MODID, "wasted");
 
+    public static final EntityType WOODBUG = EntityType.Builder
+            .create(WoodbugEntity::new, EntityClassification.CREATURE)
+            .size(0.6f, 0.3f)
+            .setTrackingRange(80)
+            .setUpdateInterval(3)
+            .setShouldReceiveVelocityUpdates(true)
+            .setCustomClientFactory(((spawnEntity, world) -> new WoodbugEntity(world)))
+            .build("habitus:woodbug")
+            .setRegistryName(Habitus.MODID, "woodbug");
+
 
     public static void registerEntities(RegistryEvent.Register<EntityType<?>> evt) {
         evt.getRegistry().registerAll(
                 CORPSE,
-                WASTED
+                WASTED,
+                WOODBUG
         );
         EntitySpawnPlacementRegistry.register(WASTED, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES);
+        EntitySpawnPlacementRegistry.register(WOODBUG, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES);
+
     }
 
     public static void registerRenderers() {
         RenderingRegistry.registerEntityRenderingHandler(CorpseEntity.class, CorpseRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(WastedEntity.class, WastedRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(WoodbugEntity.class, WoodbugRenderer::new);
 
     }
 }

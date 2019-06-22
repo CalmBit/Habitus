@@ -1,7 +1,94 @@
 {
   "variants": {
-    "axis=y":    { "model": "habitus:block/dead_log" },
-    "axis=z":     { "model": "habitus:block/dead_log", "x": 90 },
-    "axis=x":     { "model": "habitus:block/dead_log", "x": 90, "y": 90 }
+    "axis=y": [
+      {
+        "model": "habitus:block/dead_log"
+      },
+      {
+        "model": "habitus:block/dead_log_crack_centre"
+      },
+      {
+        "model": "habitus:block/dead_log_fullcrack"
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_bot"
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_top"
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_left"
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_right"
+      }
+    ],
+    "axis=z": [
+      {
+        "model": "habitus:block/dead_log",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_crack_centre",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_fullcrack",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_bot",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_left",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_top",
+        "x": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_right",
+        "x": 90
+      }
+    ],
+    "axis=x": [
+      {
+        "model": "habitus:block/dead_log",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_crack_centre",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_fullcrack",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_bot",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_left",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_top",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "habitus:block/dead_log_halfcrack_right",
+        "x": 90,
+        "y": 90
+      }
+    ]
   }
 }

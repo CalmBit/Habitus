@@ -1,7 +1,6 @@
-package com.tridevmc.habitus;
+package com.tridevmc.habitus.entity;
 
-import com.tridevmc.habitus.entity.CorpseEntity;
-import com.tridevmc.habitus.entity.VisceraType;
+import com.tridevmc.habitus.entity.render.CorpseRendererCache;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.entity.LivingEntity;

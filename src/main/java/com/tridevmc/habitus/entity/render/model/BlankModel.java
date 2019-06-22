@@ -1,4 +1,4 @@
-package com.tridevmc.habitus.entity.render;
+package com.tridevmc.habitus.entity.render.model;
 
 import com.tridevmc.habitus.entity.CorpseEntity;
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;

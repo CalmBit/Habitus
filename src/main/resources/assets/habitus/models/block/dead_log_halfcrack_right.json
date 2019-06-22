@@ -1,0 +1,6 @@
+{
+  "parent": "habitus:block/dead_log_base",
+  "textures": {
+    "0": "habitus:block/dead_log_halfcrack_right"
+  }
+}

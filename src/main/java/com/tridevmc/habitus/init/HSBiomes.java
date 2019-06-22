@@ -6,13 +6,16 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeature;
+import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.RegistryEvent;
 
 public class HSBiomes {
 
-    public static final Feature<NoFeatureConfig> DEAD_TREES = (Feature<NoFeatureConfig>) new TreeFeature(NoFeatureConfig::deserialize, false, 4, HSBlocks.DEAD_LOG.getDefaultState(), HSBlocks.DEAD_LOG.getDefaultState(), false)
+    public static final Feature<NoFeatureConfig> DEAD_TREES = (Feature<NoFeatureConfig>) new TreeFeature(NoFeatureConfig::deserialize, false, 8, HSBlocks.DEAD_LOG.getDefaultState(), Blocks.AIR.getDefaultState(), false)
             .setRegistryName("dead_trees");
+
+    public static final SurfaceBuilderConfig GRASS_DIRT_PEAT = new SurfaceBuilderConfig(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.DIRT.getDefaultState(), HSBlocks.PEAT.getDefaultState());
 
     public static final Biome DEAD_FOREST = new DeadForestBiome().setRegistryName("dead_forest");
 

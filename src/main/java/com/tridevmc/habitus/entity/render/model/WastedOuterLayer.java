@@ -1,4 +1,4 @@
-package com.tridevmc.habitus.entity.render;
+package com.tridevmc.habitus.entity.render.model;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.tridevmc.habitus.entity.WastedEntity;

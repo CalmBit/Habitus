@@ -1,5 +1,7 @@
-package com.tridevmc.habitus;
+package com.tridevmc.habitus.util;
 
+import com.tridevmc.habitus.Habitus;
+import com.tridevmc.habitus.entity.Corpse;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryInternal;
 import net.minecraftforge.registries.RegistryManager;

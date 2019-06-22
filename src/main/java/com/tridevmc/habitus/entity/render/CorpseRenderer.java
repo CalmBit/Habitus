@@ -1,7 +1,8 @@
 package com.tridevmc.habitus.entity.render;
 
-import com.tridevmc.habitus.CorpseRendererCache;
+import com.tridevmc.habitus.Habitus;
 import com.tridevmc.habitus.entity.CorpseEntity;
+import com.tridevmc.habitus.entity.render.model.BlankModel;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
@@ -20,9 +21,9 @@ public class CorpseRenderer extends LivingRenderer<CorpseEntity, QuadrupedModel<
     @Override
     public void doRender(CorpseEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
         try {
-            CorpseRendererCache.rendererMap.get(entity.corpse.getClass()).doRender(entity.corpse, x, y, z, entityYaw, partialTicks);
+            CorpseRendererCache.getRenderer(entity.corpse.getClass()).doRender(entity.corpse, x, y, z, entityYaw, partialTicks);
         } catch(NullPointerException e) {
-            //
+            Habitus.LOGGER.error("Unable to render corpse! Couldn't find CorpseRenderer for " + entity + "!");
         }
     }
 
