@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "habitus:peat_ball"
+  },
+  "result": "habtius:peat_briquette",
+  "experience": 0.3,
+  "cookingtime": 200
+}

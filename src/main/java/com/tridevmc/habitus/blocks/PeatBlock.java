@@ -8,6 +8,4 @@ public class PeatBlock extends Block {
     public PeatBlock() {
         super(Properties.create(Material.EARTH).hardnessAndResistance(1.0f).sound(SoundType.GROUND));
     }
-
-
 }

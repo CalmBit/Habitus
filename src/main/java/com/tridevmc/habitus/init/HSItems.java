@@ -79,6 +79,11 @@ public class HSItems {
     public static final Item TINCTURE_BOTTLE = new TinctureBottleItem(new Item.Properties().maxStackSize(16).group(Habitus.HABITUS))
             .setRegistryName("habitus", "tincture_bottle");
 
+    public static final Item PEAT_BALL = new PeatBallItem()
+            .setRegistryName("habitus", "peat_ball");
+    public static final Item PEAT_BRIQUETTE = new PeatBriquetteItem()
+            .setRegistryName("habitus", "peat_briquette");
+
     public static void registerItems(RegistryEvent.Register<Item> evt) {
         evt.getRegistry().registerAll(
                 STONE_CLEAVER,
@@ -119,7 +124,10 @@ public class HSItems {
                 ELIXIR,
                 ELIXIR_BOTTLE,
                 TINCTURE,
-                TINCTURE_BOTTLE
+                TINCTURE_BOTTLE,
+
+                PEAT_BALL,
+                PEAT_BRIQUETTE
         );
     }
 }
