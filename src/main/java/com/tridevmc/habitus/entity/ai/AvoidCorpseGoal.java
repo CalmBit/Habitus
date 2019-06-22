@@ -8,7 +8,7 @@ import net.minecraft.util.EntityPredicates;
 
 public class AvoidCorpseGoal extends AvoidEntityGoal<CorpseEntity> {
     public AvoidCorpseGoal(CreatureEntity entityIn, float distanceIn, double farSpeedIn, double nearSpeedIn) {
-        super(entityIn, CorpseEntity.class, (entity1 -> ((CorpseEntity)entity1).corpse.getClass() == entityIn.getClass()), distanceIn, farSpeedIn, nearSpeedIn, AvoidCorpseGoal::targeter);
+        super(entityIn, CorpseEntity.class, (e) -> ((CorpseEntity) e).corpse.getClass() == entityIn.getClass(), distanceIn, farSpeedIn, nearSpeedIn, AvoidCorpseGoal::targeter);
     }
 
     private static boolean targeter(LivingEntity target) {

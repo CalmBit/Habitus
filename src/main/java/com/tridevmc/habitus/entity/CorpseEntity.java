@@ -100,6 +100,11 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
     }
 
     @Override
+    public boolean isAlive() {
+        return true;
+    }
+
+    @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
