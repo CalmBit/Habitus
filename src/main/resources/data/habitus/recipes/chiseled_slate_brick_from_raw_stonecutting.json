@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "habitus:slate"
+  },
+  "result": "habitus:chiseled_slate_brick",
+  "count": 1
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "habitus:peat_ball"
+    }
+  },
+  "result": {
+    "item": "habitus:peat"
+  }
+}

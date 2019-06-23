@@ -1,45 +1,137 @@
 package com.tridevmc.habitus.init;
 
 import com.tridevmc.habitus.Habitus;
-import com.tridevmc.habitus.blocks.ButcherTableBlock;
-import com.tridevmc.habitus.blocks.DeadLogBlock;
-import com.tridevmc.habitus.blocks.DeadPlanksBlock;
-import com.tridevmc.habitus.blocks.PeatBlock;
+import com.tridevmc.habitus.blocks.*;
 import com.tridevmc.habitus.items.PeatBlockItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.event.RegistryEvent;
 
 public class HSBlocks {
-    public static final Block BUTCHER_TABLE = new ButcherTableBlock().setRegistryName(Habitus.MODID, "butcher_table");
-    public static final Block DEAD_LOG = new DeadLogBlock().setRegistryName(Habitus.MODID, "dead_log");
-    public static final Block DEAD_PLANKS = new DeadPlanksBlock().setRegistryName(Habitus.MODID, "dead_planks");
-    public static final Block PEAT = new PeatBlock().setRegistryName(Habitus.MODID, "peat");
+    public static final Block BUTCHER_TABLE = new ButcherTableBlock()
+            .setRegistryName(Habitus.MODID, "butcher_table");
+    public static final Block DEAD_LOG = new DeadLogBlock()
+            .setRegistryName(Habitus.MODID, "dead_log");
+    public static final Block DEAD_PLANKS = new DeadPlanksBlock()
+            .setRegistryName(Habitus.MODID, "dead_planks");
+    public static final Block PEAT = new PeatBlock()
+            .setRegistryName(Habitus.MODID, "peat");
+    public static final Block SLATE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "slate");
+    public static final Block LIMESTONE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "limestone");
+    public static final Block MARBLE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "marble");
+    public static final Block POLISHED_SLATE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "polished_slate");
+    public static final Block POLISHED_LIMESTONE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "polished_limestone");
+    public static final Block POLISHED_MARBLE = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "polished_marble");
+    public static final Block SLATE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "slate_brick");
+    public static final Block LIMESTONE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "limestone_brick");
+    public static final Block MARBLE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "marble_brick");
+    public static final Block CRACKED_SLATE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "cracked_slate_brick");
+    public static final Block CRACKED_LIMESTONE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "cracked_limestone_brick");
+    public static final Block CRACKED_MARBLE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "cracked_marble_brick");
+    public static final Block CHISELED_SLATE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "chiseled_slate_brick");
+    public static final Block CHISELED_LIMESTONE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "chiseled_limestone_brick");
+    public static final Block CHISELED_MARBLE_BRICK = new DecoStoneBlock()
+            .setRegistryName(Habitus.MODID, "chiseled_marble_brick");
+    public static final Block SLATE_SLAB = new DecoStoneSlabBlock(SLATE)
+            .setRegistryName(Habitus.MODID, "slate_slab");
+    public static final Block LIMESTONE_SLAB = new DecoStoneSlabBlock(LIMESTONE)
+            .setRegistryName(Habitus.MODID, "limestone_slab");
+    public static final Block MARBLE_SLAB = new DecoStoneSlabBlock(MARBLE)
+            .setRegistryName(Habitus.MODID, "marble_slab");
+    public static final Block SLATE_BRICK_SLAB = new DecoStoneSlabBlock(SLATE_BRICK)
+            .setRegistryName(Habitus.MODID, "slate_brick_slab");
+    public static final Block LIMESTONE_BRICK_SLAB = new DecoStoneSlabBlock(LIMESTONE_BRICK)
+            .setRegistryName(Habitus.MODID, "limestone_brick_slab");
+    public static final Block MARBLE_BRICK_SLAB = new DecoStoneSlabBlock(MARBLE_BRICK)
+            .setRegistryName(Habitus.MODID, "marble_brick_slab");
 
-    public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties().maxStackSize(1));
+    public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties()
+            .maxStackSize(1)
+            .group(Habitus.HABITUS));
 
     public static void registerBlock(RegistryEvent.Register<Block> evt) {
         evt.getRegistry().registerAll(
                 BUTCHER_TABLE,
                 DEAD_LOG,
                 DEAD_PLANKS,
-                PEAT);
+                PEAT,
+                SLATE,
+                POLISHED_SLATE,
+                SLATE_BRICK,
+                CRACKED_SLATE_BRICK,
+                CHISELED_SLATE_BRICK,
+                LIMESTONE,
+                POLISHED_LIMESTONE,
+                LIMESTONE_BRICK,
+                CRACKED_LIMESTONE_BRICK,
+                CHISELED_LIMESTONE_BRICK,
+                MARBLE,
+                POLISHED_MARBLE,
+                MARBLE_BRICK,
+                CRACKED_MARBLE_BRICK,
+                CHISELED_MARBLE_BRICK,
+                SLATE_SLAB,
+                LIMESTONE_SLAB,
+                MARBLE_SLAB,
+                SLATE_BRICK_SLAB,
+                LIMESTONE_BRICK_SLAB,
+                MARBLE_BRICK_SLAB
+        );
     }
     public static void registerItemBlocks(RegistryEvent.Register<Item> evt) {
         evt.getRegistry().registerAll(
                 ITEM_BUTCHER_TABLE,
                 createBlockItem(DEAD_LOG),
                 createBlockItem(DEAD_PLANKS),
-                new PeatBlockItem().setRegistryName(PEAT.getRegistryName())
+                new PeatBlockItem()
+                        .setRegistryName(PEAT.getRegistryName()),
+                createBlockItem(SLATE),
+                createBlockItem(POLISHED_SLATE),
+                createBlockItem(SLATE_BRICK),
+                createBlockItem(CRACKED_SLATE_BRICK),
+                createBlockItem(CHISELED_SLATE_BRICK),
+                createBlockItem(LIMESTONE),
+                createBlockItem(POLISHED_LIMESTONE),
+                createBlockItem(LIMESTONE_BRICK),
+                createBlockItem(CRACKED_LIMESTONE_BRICK),
+                createBlockItem(CHISELED_LIMESTONE_BRICK),
+                createBlockItem(MARBLE),
+                createBlockItem(POLISHED_MARBLE),
+                createBlockItem(MARBLE_BRICK),
+                createBlockItem(CRACKED_MARBLE_BRICK),
+                createBlockItem(CHISELED_MARBLE_BRICK),
+                createBlockItem(SLATE_SLAB),
+                createBlockItem(LIMESTONE_SLAB),
+                createBlockItem(MARBLE_SLAB),
+                createBlockItem(SLATE_BRICK_SLAB),
+                createBlockItem(LIMESTONE_BRICK_SLAB),
+                createBlockItem(MARBLE_BRICK_SLAB)
         );
     }
 
     public static BlockItem createBlockItem(Block block, Item.Properties properties) {
-        return (BlockItem) new BlockItem(block, properties).setRegistryName(block.getRegistryName());
+        return (BlockItem) new BlockItem(block, properties)
+            .setRegistryName(block.getRegistryName());
     }
 
     public static BlockItem createBlockItem(Block block) {
-        return createBlockItem(block, new Item.Properties());
+        return createBlockItem(block, new Item.Properties().group(Habitus.HABITUS));
     }
 }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "habitus:limestone_brick"
+  },
+  "result": "habitus:chiseled_limestone_brick",
+  "count": 1
+}

@@ -30,7 +30,12 @@ import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.BiomeManager;
@@ -55,6 +60,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // The value here should match an entry in the META-INF/mods.toml file
 
@@ -89,6 +97,22 @@ public class Habitus
     private void setup(final FMLCommonSetupEvent event)
     {
         HSBiomes.setupBiomes();
+        List<BiomeManager.BiomeEntry> warm = BiomeManager.getBiomes(BiomeManager.BiomeType.WARM);
+        List<BiomeManager.BiomeEntry> cool = BiomeManager.getBiomes(BiomeManager.BiomeType.COOL);
+        List<BiomeManager.BiomeEntry> desert = BiomeManager.getBiomes(BiomeManager.BiomeType.DESERT);
+        List<BiomeManager.BiomeEntry> icy = BiomeManager.getBiomes(BiomeManager.BiomeType.ICY);
+
+        List<BiomeManager.BiomeEntry> biomes = new ArrayList<>();
+        if(warm != null)biomes.addAll(warm);
+        if(cool != null)biomes.addAll(cool);
+        if(desert != null)biomes.addAll(desert);
+        if(icy != null)biomes.addAll(icy);
+
+        for(BiomeManager.BiomeEntry b : biomes) {
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.SLATE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.LIMESTONE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.MARBLE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
+        }
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_LOG, 80, 100);
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_PLANKS, 10, 30);
     }

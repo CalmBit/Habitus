@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "habitus:block/marble_brick",
+    "top": "habitus:block/marble_brick",
+    "side": "habitus:block/marble_brick"
+  }
+}

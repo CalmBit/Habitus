@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "habitus:limestone"
+    }
+  },
+  "result": {
+    "item": "habitus:limestone_brick",
+    "count": 4
+  }
+}

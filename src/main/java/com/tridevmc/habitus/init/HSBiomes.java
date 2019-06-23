@@ -1,6 +1,7 @@
 package com.tridevmc.habitus.init;
 
 import com.tridevmc.habitus.world.biome.DeadForestBiome;
+import com.tridevmc.habitus.world.biome.FallenTreeFeature;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
@@ -12,8 +13,9 @@ import net.minecraftforge.event.RegistryEvent;
 
 public class HSBiomes {
 
-    public static final Feature<NoFeatureConfig> DEAD_TREES = (Feature<NoFeatureConfig>) new TreeFeature(NoFeatureConfig::deserialize, false, 8, HSBlocks.DEAD_LOG.getDefaultState(), Blocks.AIR.getDefaultState(), false)
+    public static final Feature<NoFeatureConfig> DEAD_TREES = (Feature<NoFeatureConfig>) new TreeFeature(NoFeatureConfig::deserialize, false, 6, HSBlocks.DEAD_LOG.getDefaultState(), Blocks.AIR.getDefaultState(), false)
             .setRegistryName("dead_trees");
+    public static final Feature<NoFeatureConfig> FALLEN_TREES = (Feature<NoFeatureConfig>) new FallenTreeFeature(NoFeatureConfig::deserialize, 5);
 
     public static final SurfaceBuilderConfig GRASS_DIRT_PEAT = new SurfaceBuilderConfig(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.DIRT.getDefaultState(), HSBlocks.PEAT.getDefaultState());
 

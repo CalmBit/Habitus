@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "habitus:peat_ball"
+    },
+    {
+      "item": "habitus:peat_ball"
+    }
+  ],
+  "result": {
+    "item": "habitus:peat_sheet",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "habitus:block/slate_slab" },
+    "type=top": { "model": "habitus:block/slate_slab_top" },
+    "type=double": { "model": "habitus:block/slate" }
+  }
+}
