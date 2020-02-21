@@ -26,9 +26,8 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 public class DeadForestBiome extends Biome {
     public DeadForestBiome() {
         super((new Biome.Builder()).surfaceBuilder(SurfaceBuilder.DEFAULT, HSBiomes.GRASS_DIRT_PEAT).precipitation(RainType.RAIN).category(Category.FOREST).depth(0.1F).scale(0.2F).temperature(0.9F).downfall(0.2F).waterColor(0x776758).waterFogColor(0x3d352d).parent((String)null));
-        this.addStructure(Feature.MINESHAFT, new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL));
-        this.addStructure(Feature.STRONGHOLD, IFeatureConfig.NO_FEATURE_CONFIG);
-        this.addStructure(Feature.STRONGHOLD, IFeatureConfig.NO_FEATURE_CONFIG);
+        this.func_226711_a_(Feature.MINESHAFT.func_225566_b_(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
+        this.func_226711_a_(Feature.STRONGHOLD.func_225566_b_(IFeatureConfig.NO_FEATURE_CONFIG));
         DefaultBiomeFeatures.addCarvers(this);
         DefaultBiomeFeatures.addStructures(this);
         DefaultBiomeFeatures.addLakes(this);
@@ -39,11 +38,19 @@ public class DeadForestBiome extends Biome {
         DefaultBiomeFeatures.func_222299_R(this);
         DefaultBiomeFeatures.func_222314_K(this);
         DefaultBiomeFeatures.func_222283_Y(this);
-        this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.DISK, new SphereReplaceConfig(HSBlocks.PEAT.getDefaultState(), 6, 12, Lists.newArrayList(Blocks.DIRT.getDefaultState(), Blocks.GRASS_BLOCK.getDefaultState())), Placement.COUNT_TOP_SOLID, new FrequencyConfig(4)));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(HSBiomes.DEAD_TREES, IFeatureConfig.NO_FEATURE_CONFIG, Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(2, 0.1F, 1)));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(HSBiomes.FALLEN_TREES, IFeatureConfig.NO_FEATURE_CONFIG, Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(4, 0.1F, 1)));
-        this.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Biome.createDecoratedFeature(Feature.FOSSIL, IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_PASSTHROUGH, new ChanceConfig(32)));
-        this.addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(HSEntities.WOODBUG, 100, 4, 4));
+        this.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.DISK.func_225566_b_(new SphereReplaceConfig(HSBlocks.PEAT.getDefaultState(), 6, 12, Lists.newArrayList(Blocks.DIRT.getDefaultState(),
+                                                                                                                                                                                                          Blocks.GRASS_BLOCK.getDefaultState())))
+                                                                                 .func_227228_a_(Placement.COUNT_TOP_SOLID
+                                                                                                 .func_227446_a_(new FrequencyConfig(4))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HSBiomes.DEAD_TREES.func_225566_b_(HSBiomes.DEAD_TREE_CONFIG)
+                                                                                          .func_227228_a_(Placement.COUNT_EXTRA_HEIGHTMAP
+                                                                                                          .func_227446_a_(new AtSurfaceWithExtraConfig(2, 0.1f, 1))));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HSBiomes.FALLEN_TREES.func_225566_b_(IFeatureConfig.NO_FEATURE_CONFIG)
+                                                                                            .func_227228_a_(Placement.COUNT_EXTRA_HEIGHTMAP
+                                                                                                            .func_227446_a_(new AtSurfaceWithExtraConfig(2, 0.1f, 1))));
+        this.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Feature.FOSSIL.func_225566_b_(IFeatureConfig.NO_FEATURE_CONFIG)
+                                                                                         .func_227228_a_(Placement.CHANCE_PASSTHROUGH
+                                                                                                         .func_227446_a_(new ChanceConfig(32))));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.SPIDER, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ZOMBIE, 15, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
@@ -55,18 +62,20 @@ public class DeadForestBiome extends Biome {
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(HSEntities.WASTED, 80, 4, 4));
     }
 
+
+
     @Override
-    public int getSkyColorByTemp(float currentTemperature) {
+    public int func_225529_c_() {
         return 0x749dad;
     }
 
     @Override
-    public int getGrassColor(BlockPos pos) {
+    public int func_225528_a_(double p_225528_1_, double p_225528_3_) {
         return 0x5b4223;
     }
 
     @Override
-    public int getFoliageColor(BlockPos pos) {
+    public int func_225527_a_() {
         return 0x5b4223;
     }
 

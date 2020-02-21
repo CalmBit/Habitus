@@ -16,12 +16,12 @@ public class WastedRenderer extends AbstractZombieRenderer<WastedEntity, ZombieM
     private static final ResourceLocation WASTED_ZOMBIE_TEXTURES = new ResourceLocation(Habitus.MODID, "textures/entity/wasted.png");
 
     public WastedRenderer(EntityRendererManager rendererManager) {
-        super(rendererManager, new ZombieModel<>(), new ZombieModel<>(0.5F, true), new ZombieModel<>(1.0F, true));
+        super(rendererManager, new ZombieModel<>(0.0f, false), new ZombieModel<>(0.5F, true), new ZombieModel<>(1.0F, true));
         this.addLayer(new WastedOuterLayer(this));
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(ZombieEntity entity) {
+    public ResourceLocation getEntityTexture(ZombieEntity entity) {
         return WASTED_ZOMBIE_TEXTURES;
     }
 }

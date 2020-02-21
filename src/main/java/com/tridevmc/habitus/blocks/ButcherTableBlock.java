@@ -1,50 +1,42 @@
 package com.tridevmc.habitus.blocks;
 
-import com.tridevmc.habitus.init.HSBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootContext;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class ButcherTableBlock extends HorizontalBlock {
 
     public static final EnumProperty<ButcherTableSide> SIDE = EnumProperty.create("side", ButcherTableSide.class);
 
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
     public ButcherTableBlock() {
-        super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
+        super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD).func_226896_b_());
     }
 
+    @Override
     public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
         super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
     }
 
+    @Override
     public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
         ButcherTableSide side = state.get(SIDE);
         BlockPos blockpos = pos.offset(getDirectionToOther(side, (Direction)state.get(HORIZONTAL_FACING).rotateYCCW()));
@@ -64,10 +56,12 @@ public class ButcherTableBlock extends HorizontalBlock {
         super.onBlockHarvested(worldIn, pos, state, player);
     }
 
+    @Override
     public PushReaction getPushReaction(BlockState state) {
         return PushReaction.DESTROY;
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         if (facing != getDirectionToOther(stateIn.get(SIDE), stateIn.get(HORIZONTAL_FACING).rotateYCCW())) {
             return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
@@ -115,4 +109,25 @@ public class ButcherTableBlock extends HorizontalBlock {
                 HSBlocks.ITEM_BUTCHER_TABLE.getDefaultInstance()
                 : Items.AIR.getDefaultInstance());
     }*/
+
+    @OnlyIn(Dist.CLIENT)
+    public float func_220080_a(BlockState p_220080_1_, IBlockReader p_220080_2_, BlockPos p_220080_3_) {
+        return 1.0F;
+    }
+
+    public boolean propagatesSkylightDown(BlockState p_200123_1_, IBlockReader p_200123_2_, BlockPos p_200123_3_) {
+        return true;
+    }
+
+    public boolean func_229869_c_(BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_) {
+        return false;
+    }
+
+    public boolean isNormalCube(BlockState p_220081_1_, IBlockReader p_220081_2_, BlockPos p_220081_3_) {
+        return false;
+    }
+
+    public boolean canEntitySpawn(BlockState p_220067_1_, IBlockReader p_220067_2_, BlockPos p_220067_3_, EntityType<?> p_220067_4_) {
+        return false;
+    }
 }

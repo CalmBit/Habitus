@@ -3,5 +3,19 @@
   "textures": {
     "layer0": "habitus:item/elixir_overlay",
     "layer1": "habitus:item/elixir"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "damage": 0.32
+      },
+      "model": "habitus:item/elixir_two_thirds"
+    },
+    {
+      "predicate": {
+        "damage": 0.65
+      },
+      "model": "habitus:item/elixir_one_third"
+    }
+  ]
 }

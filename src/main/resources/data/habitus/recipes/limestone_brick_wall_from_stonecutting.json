@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "habitus:limestone_brick"
+  },
+  "result": "habitus:limestone_brick_wall",
+  "count": 1
+}

@@ -80,7 +80,7 @@ public class TinctureUtils {
                     itextcomponent.appendText(" (").appendText(EffectUtils.getPotionDurationString(effectinstance, durationFactor)).appendText(")");
                 }
 
-                tooltip.add(itextcomponent.applyTextStyle(effect.getEffectType().func_220306_a()));
+                tooltip.add(itextcomponent.applyTextStyle(effect.getEffectType().getColor()));
             }
         }
     }

@@ -43,9 +43,7 @@ public class ElixirItem extends PotionItem {
 
         AtomicBoolean broken = new AtomicBoolean(false);
         if (playerentity == null || !playerentity.abilities.isCreativeMode) {
-            stack.damageItem(1, entityLiving, (e)->{
-                broken.set(true);
-            });
+            stack.damageItem(1, entityLiving, (e)-> broken.set(true));
         }
 
         if (playerentity instanceof ServerPlayerEntity) {

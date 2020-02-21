@@ -18,7 +18,7 @@ public class WoodbugRenderer extends MobRenderer<WoodbugEntity, WoodbugModel> {
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(WoodbugEntity entity) {
+    public ResourceLocation getEntityTexture(WoodbugEntity entity) {
         return WOODBUG_TEXTURES;
     }
 }

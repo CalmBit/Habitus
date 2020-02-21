@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -27,13 +28,14 @@ public class Corpse extends ForgeRegistryEntry<Corpse> {
     @OnlyIn(Dist.CLIENT)
     public void setupRenderer(Class<? extends EntityRenderer> rendererClass, EntityRendererManager manager) {
         this.rendererClass = rendererClass;
-        CorpseRendererCache.cacheRenderer(wrappedEntityClass, manager.entityRenderMap.get(wrappedEntityClass));
+        CorpseRendererCache.cacheRenderer(wrappedEntityClass, manager.renderers.get(wrappedEntityClass));
     }
 
     public CorpseEntity createEntity(LivingEntity ent, World world) {
         CorpseEntity c = new CorpseEntity(world);
         c.copyEntityData(ent, ent.getType());
-        c.setPositionAndRotation(ent.posX, ent.posY, ent.posZ, ent.rotationYaw, ent.rotationPitch);
+        Vec3d pos = ent.getPositionVector();
+        c.setPositionAndRotation(pos.x, pos.y, pos.z, ent.rotationYaw, ent.rotationPitch);
         c.setMotion(ent.getMotion());
         world.addEntity(c);
         return c;

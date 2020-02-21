@@ -61,6 +61,21 @@ public class HSBlocks {
             .setRegistryName(Habitus.MODID, "limestone_brick_slab");
     public static final Block MARBLE_BRICK_SLAB = new DecoStoneSlabBlock(MARBLE_BRICK)
             .setRegistryName(Habitus.MODID, "marble_brick_slab");
+    public static final Block SLATE_WALL = new DecoStoneWallBlock(SLATE)
+            .setRegistryName(Habitus.MODID, "slate_wall");
+    public static final Block LIMESTONE_WALL = new DecoStoneWallBlock(LIMESTONE)
+            .setRegistryName(Habitus.MODID, "limestone_wall");
+    public static final Block MARBLE_WALL = new DecoStoneWallBlock(MARBLE)
+            .setRegistryName(Habitus.MODID, "marble_wall");
+    public static final Block SLATE_BRICK_WALL = new DecoStoneWallBlock(SLATE_BRICK)
+            .setRegistryName(Habitus.MODID, "slate_brick_wall");
+    public static final Block LIMESTONE_BRICK_WALL = new DecoStoneWallBlock(LIMESTONE_BRICK)
+            .setRegistryName(Habitus.MODID, "limestone_brick_wall");
+    public static final Block MARBLE_BRICK_WALL = new DecoStoneWallBlock(MARBLE_BRICK)
+            .setRegistryName(Habitus.MODID, "marble_brick_wall");
+    public static final Block DEAD_SLAB = new WoodSlabBlock(DEAD_PLANKS)
+            .setRegistryName(Habitus.MODID, "dead_slab");
+
 
     public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties()
             .maxStackSize(1)
@@ -92,7 +107,14 @@ public class HSBlocks {
                 MARBLE_SLAB,
                 SLATE_BRICK_SLAB,
                 LIMESTONE_BRICK_SLAB,
-                MARBLE_BRICK_SLAB
+                MARBLE_BRICK_SLAB,
+                SLATE_WALL,
+                LIMESTONE_WALL,
+                MARBLE_WALL,
+                SLATE_BRICK_WALL,
+                LIMESTONE_BRICK_WALL,
+                MARBLE_BRICK_WALL,
+                DEAD_SLAB
         );
     }
     public static void registerItemBlocks(RegistryEvent.Register<Item> evt) {
@@ -122,7 +144,14 @@ public class HSBlocks {
                 createBlockItem(MARBLE_SLAB),
                 createBlockItem(SLATE_BRICK_SLAB),
                 createBlockItem(LIMESTONE_BRICK_SLAB),
-                createBlockItem(MARBLE_BRICK_SLAB)
+                createBlockItem(MARBLE_BRICK_SLAB),
+                createBlockItem(SLATE_WALL),
+                createBlockItem(LIMESTONE_WALL),
+                createBlockItem(MARBLE_WALL),
+                createBlockItem(SLATE_BRICK_WALL),
+                createBlockItem(LIMESTONE_BRICK_WALL),
+                createBlockItem(MARBLE_BRICK_WALL),
+                createBlockItem(DEAD_SLAB)
         );
     }
 

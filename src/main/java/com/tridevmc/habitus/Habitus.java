@@ -109,9 +109,15 @@ public class Habitus
         if(icy != null)biomes.addAll(icy);
 
         for(BiomeManager.BiomeEntry b : biomes) {
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.SLATE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.LIMESTONE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, HSBlocks.MARBLE.getDefaultState(), 33), Placement.COUNT_RANGE, new CountRangeConfig(10, 0, 0, 80)));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    HSBlocks.SLATE.getDefaultState(), 33))
+                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    HSBlocks.LIMESTONE.getDefaultState(), 33))
+                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    HSBlocks.MARBLE.getDefaultState(), 33))
+                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
         }
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_LOG, 80, 100);
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_PLANKS, 10, 30);
@@ -224,7 +230,7 @@ public class Habitus
     }
 
     // venting my FRUSTRATION
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
+    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class ForgeVents {
         @SubscribeEvent
         public static void onColorRegistry(final ColorHandlerEvent.Item evt) {

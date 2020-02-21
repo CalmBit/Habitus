@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "habitus:block/dead_slab" },
+    "type=top": { "model": "habitus:block/dead_slab_top" },
+    "type=double": { "model": "habitus:block/dead_planks" }
+  }
+}

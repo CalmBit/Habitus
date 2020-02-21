@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "habitus:slate"
+  },
+  "result": "habitus:polished_slate",
+  "count": 1
+}

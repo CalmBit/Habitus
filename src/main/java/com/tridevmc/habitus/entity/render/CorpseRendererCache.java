@@ -20,10 +20,10 @@ public class CorpseRendererCache {
         Habitus.LOGGER.info("Cached renderer for '" + clazz.getSimpleName() + '"');
     }
 
-    public static EntityRenderer getRenderer(Class<? extends LivingEntity> clazz) {
-        if(!rendererMap.containsKey(clazz)) {
-            rendererMap.put(clazz, Minecraft.getInstance().getRenderManager().getEntityClassRenderObject(clazz));
+    public static EntityRenderer getRenderer(LivingEntity e) {
+        if(!rendererMap.containsKey(e.getClass())) {
+            rendererMap.put(e.getClass(), Minecraft.getInstance().getRenderManager().getRenderer(e));
         }
-        return rendererMap.get(clazz);
+        return rendererMap.get(e.getClass());
     }
 }

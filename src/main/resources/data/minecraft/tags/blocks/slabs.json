@@ -1,0 +1,11 @@
+{
+  "values": [
+    "habitus:slate_slab",
+    "habitus:limestone_slab",
+    "habitus:marble_slab",
+    "habitus:slate_brick_slab",
+    "habitus:limestone_brick_slab",
+    "habitus:marble_brick_slab",
+    "habitus:dead_slab"
+  ]
+}
