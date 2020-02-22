@@ -34,80 +34,80 @@ public class WoodbugModel extends SegmentedModel<WoodbugEntity> {
         right_leg_3.setRotationPoint(-2.5F, -1.0F, 1.5F);
         legs.addChild(right_leg_3);
         right_leg_3.setTextureOffset(12, 20);
-        right_leg_3.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        right_leg_3.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         left_leg_3 = new ModelRenderer(this);
         left_leg_3.setRotationPoint(2.5F, -1.0F, 1.5F);
         legs.addChild(left_leg_3);
         left_leg_3.setTextureOffset(8, 20);
-        left_leg_3.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        left_leg_3.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         right_leg_1 = new ModelRenderer(this);
         right_leg_1.setRotationPoint(-2.5F, -1.0F, -4.5F);
         legs.addChild(right_leg_1);
         right_leg_1.setTextureOffset(20, 20);
-        right_leg_1.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        right_leg_1.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         left_leg_1 = new ModelRenderer(this);
         left_leg_1.setRotationPoint(2.5F, -1.0F, -4.5F);
         legs.addChild(left_leg_1);
         left_leg_1.setTextureOffset(0, 20);
-        left_leg_1.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        left_leg_1.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         right_leg_2 = new ModelRenderer(this);
         right_leg_2.setRotationPoint(-2.5F, -1.0F, -1.5F);
         legs.addChild(right_leg_2);
         right_leg_2.setTextureOffset(16, 20);
-        right_leg_2.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        right_leg_2.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         left_leg_2 = new ModelRenderer(this);
         left_leg_2.setRotationPoint(2.5F, -1.0F, -1.5F);
         legs.addChild(left_leg_2);
         left_leg_2.setTextureOffset(4, 20);
-        left_leg_2.func_228303_a_(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
+        left_leg_2.addBox(-0.5F, -1.0F, -0.5F, 1, 2, 1, 0.0F, false);
 
         body = new ModelRenderer(this);
         body.setRotationPoint(0.0F, 24.0F, 0.0F);
         body.setTextureOffset(0, 10);
-        body.func_228303_a_(-2.0F, -3.0F, -5.0F, 4, 2, 8, 0.0F, false);
+        body.addBox(-2.0F, -3.0F, -5.0F, 4, 2, 8, 0.0F, false);
 
         left_elytra = new ModelRenderer(this);
         left_elytra.setRotationPoint(-1.5F, -3.5F, 0.5F);
         body.addChild(left_elytra);
         left_elytra.setTextureOffset(24, 0);
-        left_elytra.func_228303_a_(-1.5F, -0.5F, -6.5F, 3, 1, 9, 0.0F, false);
+        left_elytra.addBox(-1.5F, -0.5F, -6.5F, 3, 1, 9, 0.0F, false);
 
         right_elytra = new ModelRenderer(this);
         right_elytra.setRotationPoint(1.5F, -3.5F, 0.5F);
         body.addChild(right_elytra);
         right_elytra.setTextureOffset(0, 0);
-        right_elytra.func_228303_a_(-1.5F, -0.5F, -6.5F, 3, 1, 9, 0.0F, false);
+        right_elytra.addBox(-1.5F, -0.5F, -6.5F, 3, 1, 9, 0.0F, false);
 
         head = new ModelRenderer(this);
         head.setRotationPoint(0.0F, 23.3333F, -2.0F);
         head.setTextureOffset(24, 10);
-        head.func_228303_a_(-2.0F, -2.3333F, -5.0F, 4, 2, 2, 0.0F, false);
+        head.addBox(-2.0F, -2.3333F, -5.0F, 4, 2, 2, 0.0F, false);
 
         right_antenna = new ModelRenderer(this);
         right_antenna.setRotationPoint(1.5F, -1.8333F, -5.5F);
         head.addChild(right_antenna);
         right_antenna.setTextureOffset(0, 23);
-        right_antenna.func_228303_a_(-0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false);
+        right_antenna.addBox(-0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false);
 
         left_antenna = new ModelRenderer(this);
         left_antenna.setRotationPoint(-1.5F, -1.8333F, -5.5F);
         head.addChild(left_antenna);
         left_antenna.setTextureOffset(4, 23);
-        left_antenna.func_228303_a_(-0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false);
+        left_antenna.addBox(-0.5F, -0.5F, -0.5F, 1, 1, 1, 0.0F, false);
     }
 
-
-    public Iterable<ModelRenderer> func_225601_a_() {
+    @Override
+    public Iterable<ModelRenderer> getParts() {
         return ImmutableList.of(this.head, this.body, this.legs);
     }
 
     @Override
-    public void func_225597_a_(WoodbugEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setRotationAngles(WoodbugEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.rotateAngleY = (netHeadYaw * ((float)Math.PI / 270F));
         this.head.rotateAngleX = (headPitch * ((float)Math.PI / 270F));
         this.left_leg_1.rotateAngleZ = (-(float)Math.PI / 4F);

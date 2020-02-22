@@ -22,7 +22,7 @@ public class HSBiomes {
     public static final TreeFeatureConfig DEAD_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(HSBlocks.DEAD_LOG.getDefaultState()),
             new SimpleBlockStateProvider(Blocks.AIR.getDefaultState()),
             new BlobFoliagePlacer(0, 0))
-            .func_225569_d_(6).func_225568_b_();
+            .baseHeight(6).build();
     public static final Feature<TreeFeatureConfig> DEAD_TREES = (Feature<TreeFeatureConfig>) new DeadTreeFeature(TreeFeatureConfig::func_227338_a_)
             .setRegistryName("dead_trees");
     public static final Feature<NoFeatureConfig> FALLEN_TREES = (Feature<NoFeatureConfig>) new FallenTreeFeature(NoFeatureConfig::deserialize, 5)
@@ -54,6 +54,6 @@ public class HSBiomes {
                 OASIS
         );
 
-        Biomes.DESERT.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, OASIS.func_225566_b_(IFeatureConfig.NO_FEATURE_CONFIG).func_227228_a_(Placement.CHANCE_HEIGHTMAP.func_227446_a_(new ChanceConfig(100))));
+        Biomes.DESERT.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, OASIS.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP.configure(new ChanceConfig(100))));
     }
 }

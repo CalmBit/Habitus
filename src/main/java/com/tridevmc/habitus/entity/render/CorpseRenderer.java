@@ -21,13 +21,14 @@ public class CorpseRenderer extends LivingRenderer<CorpseEntity, QuadrupedModel<
     }
 
     @Override
-    public void func_225623_a_(CorpseEntity entity, float p_225623_2_, float p_225623_3_, MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_) {
+    public void render(CorpseEntity entity, float p_225623_2_, float p_225623_3_, MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_) {
         try {
-            CorpseRendererCache.getRenderer(entity.corpse).func_225623_a_(entity.corpse, p_225623_2_, p_225623_3_, p_225623_4_, p_225623_5_, p_225623_6_);
+            CorpseRendererCache.getRenderer(entity.corpse).render(entity.corpse, p_225623_2_, p_225623_3_, p_225623_4_, p_225623_5_, p_225623_6_);
         } catch(NullPointerException e) {
             Habitus.LOGGER.error("Unable to render corpse! Couldn't find CorpseRenderer for " + entity + "!");
         }
     }
+
 
     @Nullable
     @Override

@@ -1,5 +1,7 @@
 package com.tridevmc.habitus;
 
+import com.tfar.additionalevents.event.DropLootEvent;
+import com.tfar.additionalevents.event.GenerateLootEvent;
 import com.tridevmc.habitus.client.ElixirColorer;
 import com.tridevmc.habitus.client.TinctureColorer;
 import com.tridevmc.habitus.entity.Corpse;
@@ -11,31 +13,28 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FireBlock;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.storage.loot.LootParameters;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.BiomeManager;
@@ -60,7 +59,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,15 +107,15 @@ public class Habitus
         if(icy != null)biomes.addAll(icy);
 
         for(BiomeManager.BiomeEntry b : biomes) {
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
                     HSBlocks.SLATE.getDefaultState(), 33))
-                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    .withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 80))));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
                     HSBlocks.LIMESTONE.getDefaultState(), 33))
-                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
-            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.func_225566_b_(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
+                    .withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 80))));
+            b.biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE,
                     HSBlocks.MARBLE.getDefaultState(), 33))
-                    .func_227228_a_(Placement.COUNT_RANGE.func_227446_a_(new CountRangeConfig(10, 0, 0, 80))));
+                    .withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 80))));
         }
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_LOG, 80, 100);
         ((FireBlock)Blocks.FIRE).setFireInfo(HSBlocks.DEAD_PLANKS, 10, 30);
@@ -206,16 +204,6 @@ public class Habitus
     }
 
     @SubscribeEvent
-    public void onBlockHarvest(BlockEvent.HarvestDropsEvent evt) {
-        /*if(!evt.isSilkTouching()) {
-            EffectInstance e = evt.getHarvester().getActivePotionEffect(HSEffects.SILK_TOUCH);
-            if(e != null && evt.getState().) {
-                evt.getDrops().clear();
-            }
-        }*/
-    }
-
-    @SubscribeEvent
     public void onEntityJoin(final EntityJoinWorldEvent evt) {
         try {
             if (corpseRegistry == null)
@@ -230,17 +218,39 @@ public class Habitus
     }
 
     // venting my FRUSTRATION
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
     public static class ForgeVents {
         @SubscribeEvent
-        public static void onColorRegistry(final ColorHandlerEvent.Item evt) {
-            evt.getItemColors().register(new ElixirColorer(), HSItems.ELIXIR);
-            evt.getItemColors().register(new TinctureColorer(), HSItems.TINCTURE);
+        public static void onGenerateLoot(final GenerateLootEvent evt) {
+            Entity ent = evt.getContextBuilder().get(LootParameters.THIS_ENTITY);
+            if(ent instanceof PlayerEntity) {
+                PlayerEntity player = (PlayerEntity)ent;
+                ItemStack tool = evt.getContextBuilder().get(LootParameters.TOOL);
+                if(tool != null) {
+                    tool = tool.copy();
+                    if(player.getActivePotionEffect(HSEffects.SILK_TOUCH) != null) {
+                        tool.addEnchantment(Enchantments.SILK_TOUCH, 1);
+                    } else if(player.getActivePotionEffect(HSEffects.FORTUNE) != null) {
+                        int level = 1 + player.getActivePotionEffect(HSEffects.FORTUNE).getAmplifier();
+                        tool.addEnchantment(Enchantments.FORTUNE, level);
+                    }
+                    evt.getContextBuilder().withParameter(LootParameters.TOOL, tool);
+
+                } else {
+                    LOGGER.error("Unable to get LootParameters.TOOL! Couldn't apply tincture effect.");
+                }
+            }
         }
     }
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+
+        @SubscribeEvent
+        public static void onColorRegistry(final ColorHandlerEvent.Item evt) {
+            evt.getItemColors().register(new ElixirColorer(), HSItems.ELIXIR);
+            evt.getItemColors().register(new TinctureColorer(), HSItems.TINCTURE);
+        }
 
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> evt) {

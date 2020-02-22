@@ -13,18 +13,24 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
+import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.apache.logging.log4j.core.jmx.Server;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -56,8 +62,19 @@ public class TinctureItem extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         PlayerEntity playerentity = entityLiving instanceof PlayerEntity ? (PlayerEntity)entityLiving : null;
 
-        if (playerentity == null || !playerentity.abilities.isCreativeMode) {
-            stack.shrink(1);
+
+        if (playerentity != null) {
+            for(EffectInstance effectInstance : TinctureUtils.getRejectionsFromStack(stack)) {
+                if(playerentity.getActivePotionEffect(effectInstance.getPotion()) != null) {
+                    playerentity.addPotionEffect(new EffectInstance(Effects.NAUSEA, 200, 2));
+                    playerentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 2));
+                    playerentity.sendStatusMessage(new TranslationTextComponent("habitus.tincture.rejection").applyTextStyle(TextFormatting.RED), true);
+                    return stack;
+                }
+            }
+            if(!playerentity.abilities.isCreativeMode) {
+                stack.shrink(1);
+            }
         }
 
         if (playerentity instanceof ServerPlayerEntity) {

@@ -28,7 +28,7 @@ public class ButcherTableBlock extends HorizontalBlock {
     public static final EnumProperty<ButcherTableSide> SIDE = EnumProperty.create("side", ButcherTableSide.class);
 
     public ButcherTableBlock() {
-        super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD).func_226896_b_());
+        super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD).notSolid());
     }
 
     @Override

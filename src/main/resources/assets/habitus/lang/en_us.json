@@ -126,10 +126,12 @@
     "effect.habitus.fire_aspect": "Fire Aspect",
     "effect.habitus.sharpness": "Sharpness",
     "effect.habitus.knockback": "Knockback",
-    "tincture.potency.0": "",
-    "tincture.potency.1": "II",
-    "tincture.potency.2": "III",
-    "tincture.potency.3": "IV",
-    "tincture.potency.4": "V",
-    "tincture.potency.5": "VI"
+    "habitus.tincture.potency.0": "",
+    "habitus.tincture.potency.1": "II",
+    "habitus.tincture.potency.2": "III",
+    "habitus.tincture.potency.3": "IV",
+    "habitus.tincture.potency.4": "V",
+    "habitus.tincture.potency.5": "VI",
+
+    "habitus.tincture.rejection": "You feel like drinking this tincture is a bad idea..."
 }

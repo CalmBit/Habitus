@@ -6,6 +6,8 @@ import com.tridevmc.habitus.items.PeatBlockItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.event.RegistryEvent;
@@ -75,11 +77,14 @@ public class HSBlocks {
             .setRegistryName(Habitus.MODID, "marble_brick_wall");
     public static final Block DEAD_SLAB = new WoodSlabBlock(DEAD_PLANKS)
             .setRegistryName(Habitus.MODID, "dead_slab");
+    public static final Block TINCTURE_STAND = new TinctureStandBlock()
+            .setRegistryName(Habitus.MODID, "tincture_stand");
 
 
     public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties()
             .maxStackSize(1)
             .group(Habitus.HABITUS));
+
 
     public static void registerBlock(RegistryEvent.Register<Block> evt) {
         evt.getRegistry().registerAll(
@@ -114,8 +119,11 @@ public class HSBlocks {
                 SLATE_BRICK_WALL,
                 LIMESTONE_BRICK_WALL,
                 MARBLE_BRICK_WALL,
-                DEAD_SLAB
+                DEAD_SLAB,
+                TINCTURE_STAND
         );
+
+        RenderTypeLookup.setRenderLayer(TINCTURE_STAND, RenderType.getCutout());
     }
     public static void registerItemBlocks(RegistryEvent.Register<Item> evt) {
         evt.getRegistry().registerAll(
@@ -151,7 +159,8 @@ public class HSBlocks {
                 createBlockItem(SLATE_BRICK_WALL),
                 createBlockItem(LIMESTONE_BRICK_WALL),
                 createBlockItem(MARBLE_BRICK_WALL),
-                createBlockItem(DEAD_SLAB)
+                createBlockItem(DEAD_SLAB),
+                createBlockItem(TINCTURE_STAND)
         );
     }
 

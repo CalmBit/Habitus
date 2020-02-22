@@ -52,6 +52,20 @@ public class TinctureUtils {
         return t.getEffects();
     }
 
+    public static List<EffectInstance> getRejectionsFromStack(ItemStack stack) {
+        return getRejectionsFromTag(stack.getTag());
+    }
+
+    public static List<EffectInstance> getRejectionsFromTag(CompoundNBT tag) {
+        Tincture t = getTinctureFromNBT(tag);
+
+        if(t == null) {
+            return HSTinctures.EMPTY.getRejections();
+        }
+
+        return t.getRejections();
+    }
+
     public static Tincture getTinctureFromNBT(CompoundNBT tag) {
         if(tag == null) {
             return HSTinctures.EMPTY;
@@ -73,7 +87,7 @@ public class TinctureUtils {
                 Effect effect = effectinstance.getPotion();
 
                 if (effectinstance.getAmplifier() > 0) {
-                    itextcomponent.appendText(" ").appendSibling(new TranslationTextComponent("tincture.potency." + effectinstance.getAmplifier()));
+                    itextcomponent.appendText(" ").appendSibling(new TranslationTextComponent("habitus.tincture.potency." + effectinstance.getAmplifier()));
                 }
 
                 if (effectinstance.getDuration() > 20) {

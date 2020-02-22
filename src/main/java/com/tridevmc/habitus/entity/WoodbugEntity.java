@@ -193,9 +193,11 @@ public class WoodbugEntity extends CreatureEntity {
         }
 
         public boolean withinLateralDistance(double dist) {
-            return Math.abs(this.trueNest.getX() - this.entity.getPositionVec().getX()) < dist &&
-                    Math.abs(this.trueNest.getZ() - this.entity.getPositionVec().getZ()) < dist; //&&
-                    //Math.abs(this.trueNest.getY() - this.entity.getPositionVec().getY()) < (dist * 4);
+            double current_dist =
+                    Math.pow((this.trueNest.getX() - this.entity.getPositionVec().getX()), 2) +
+                    Math.pow((this.trueNest.getZ() - this.entity.getPositionVec().getZ()), 2);
+            current_dist = Math.sqrt(current_dist);
+            return current_dist <= dist;
         }
 
         @Override

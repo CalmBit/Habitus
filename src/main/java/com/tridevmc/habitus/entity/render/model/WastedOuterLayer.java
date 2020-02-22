@@ -21,8 +21,8 @@ public class WastedOuterLayer extends LayerRenderer<WastedEntity, ZombieModel<Wa
     }
 
     @Override
-    public void func_225628_a_(MatrixStack matrixStack, IRenderTypeBuffer iRenderTypeBuffer, int i, WastedEntity wastedEntity, float v, float v1, float v2, float v3, float v4, float v5) {
-        func_229140_a_(this.getEntityModel(),
+    public void render(MatrixStack matrixStack, IRenderTypeBuffer iRenderTypeBuffer, int i, WastedEntity wastedEntity, float v, float v1, float v2, float v3, float v4, float v5) {
+        renderCopyCutoutModel(this.getEntityModel(),
                        this.WASTED_OUTER_MODEL,
                        WASTED_OUTER_LAYER_TEXTURES,
                        matrixStack,
@@ -33,7 +33,4 @@ public class WastedOuterLayer extends LayerRenderer<WastedEntity, ZombieModel<Wa
                        1.0f, 1.0f, 1.0f);
     }
 
-    public boolean shouldCombineTextures() {
-        return true;
-    }
 }

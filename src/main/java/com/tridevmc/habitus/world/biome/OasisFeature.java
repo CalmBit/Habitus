@@ -1,6 +1,7 @@
 package com.tridevmc.habitus.world.biome;
 
 import com.mojang.datafixers.Dynamic;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -20,13 +21,25 @@ public class OasisFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        pos = worldIn.getHeight(Heightmap.Type.WORLD_SURFACE, pos);
+        pos = worldIn.getHeight(Heightmap.Type.WORLD_SURFACE_WG, pos);
 
-        for(int x = pos.getX()-5;x <= pos.getX()+5;x++) {
-            for(int z = pos.getZ()-5;z <= pos.getZ()+5;z++) {
-                BlockPos ppos = new BlockPos(x, pos.getY(), z);
-                if(worldIn.getBlockState(ppos.down()).getBlock() == Blocks.WATER) continue;
-                this.setBlockState(worldIn, new BlockPos(x, pos.getY(), z), Blocks.GRASS_BLOCK.getDefaultState());
+        int radius = 16;
+        int r2 = radius*radius;
+        int waterRadius = radius-4;
+        int wr2 = waterRadius*waterRadius;
+        for(int x = -radius;x <= radius;x++) {
+            for(int z = -radius;z <= radius;z++) {
+                BlockPos ppos = worldIn.getHeight(Heightmap.Type.WORLD_SURFACE_WG, new BlockPos(pos.getX()+x,0,pos.getZ()+z)).down();
+                if((x*x)+(z*z) > r2) continue;
+                for(int y = ppos.getY()-6;y <= ppos.getY();y++) {
+                    BlockPos replacePos = new BlockPos(ppos.getX(), y, ppos.getZ());
+                    if(worldIn.getBlockState(replacePos).getBlock() == Blocks.WATER) continue;
+                    BlockState replaceState = (y == ppos.getY()) ?
+                            ((x*x)+(z*z)<=wr2?Blocks.WATER.getDefaultState():Blocks.GRASS_BLOCK.getDefaultState())
+                            : Blocks.DIRT.getDefaultState();
+                    this.setBlockState(worldIn, replacePos, replaceState);
+                }
+
             }
         }
         return true;

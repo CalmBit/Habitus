@@ -69,7 +69,7 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
 
     @Override
     protected void onDeathUpdate() {
-
+        // stub out
     }
 
     @Override

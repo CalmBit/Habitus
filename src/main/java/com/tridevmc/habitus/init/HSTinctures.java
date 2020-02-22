@@ -25,6 +25,18 @@ public class HSTinctures {
             .setRegistryName("habitus", "knockback");
     public static final Tincture KNOCKBACK_2 = new Tincture("knockback", new EffectInstance(HSEffects.KNOCKBACK, 2400, 1))
             .setRegistryName("habitus", "knockback_two");
+    public static final Tincture SILK_TOUCH = new Tincture("silk_touch", new EffectInstance(HSEffects.SILK_TOUCH, 2400))
+            .setRejections(new EffectInstance(HSEffects.FORTUNE))
+            .setRegistryName("habitus", "silk_touch");
+    public static final Tincture FORTUNE = new Tincture("fortune", new EffectInstance(HSEffects.FORTUNE, 2400))
+            .setRejections(new EffectInstance(HSEffects.SILK_TOUCH))
+            .setRegistryName("habitus", "fortune");
+    public static final Tincture FORTUNE_2 = new Tincture("fortune", new EffectInstance(HSEffects.FORTUNE, 2400, 1))
+            .setRejections(new EffectInstance(HSEffects.SILK_TOUCH))
+            .setRegistryName("habitus", "fortune_two");
+    public static final Tincture FORTUNE_3 = new Tincture("fortune", new EffectInstance(HSEffects.FORTUNE, 2400, 2))
+            .setRejections(new EffectInstance(HSEffects.SILK_TOUCH))
+            .setRegistryName("habitus", "fortune_three");
 
 
     public static void registerTinctures(RegistryEvent.Register<Tincture> evt) {
@@ -38,7 +50,11 @@ public class HSTinctures {
                 SHARPNESS_4,
                 SHARPNESS_5,
                 KNOCKBACK,
-                KNOCKBACK_2
+                KNOCKBACK_2,
+                SILK_TOUCH,
+                FORTUNE,
+                FORTUNE_2,
+                FORTUNE_3
         );
     }
 }

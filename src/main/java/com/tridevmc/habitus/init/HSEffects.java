@@ -15,12 +15,18 @@ public class HSEffects {
             .setRegistryName("habitus", "sharpness");
     public static final Effect KNOCKBACK = new HabitusEffect(EffectType.BENEFICIAL, 0x0f27db)
             .setRegistryName("habitus", "knockback");
+    public static final Effect SILK_TOUCH = new HabitusEffect(EffectType.BENEFICIAL, 0x9c44db)
+            .setRegistryName("habitus", "silk_touch");
+    public static  final Effect FORTUNE = new HabitusEffect(EffectType.BENEFICIAL, 0x1ba62d)
+            .setRegistryName("habitus", "fortune");
 
     public static void registerEffects(RegistryEvent.Register<Effect> evt) {
         evt.getRegistry().registerAll(
             FIRE_ASPECT,
             SHARPNESS,
-            KNOCKBACK
+            KNOCKBACK,
+            SILK_TOUCH,
+            FORTUNE
         );
     }
 }
