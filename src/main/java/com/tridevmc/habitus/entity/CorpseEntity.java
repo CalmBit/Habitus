@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
@@ -65,7 +66,7 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
     @Override
     public void tick() {
         super.tick();
-        if(corpse.deathTime != 20) {
+        if (corpse.deathTime != 20) {
             ++corpse.deathTime;
         }
     }
@@ -93,7 +94,7 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
 
     public void setupCorpseEntity(CompoundNBT entityTag) {
         Optional<EntityType<?>> t = EntityType.readEntityType(entityTag);
-        if(t.isPresent()) {
+        if (t.isPresent()) {
             type = t.get();
             corpse = (LivingEntity) type.create(this.world);
             corpse.deserializeNBT(entityTag);
@@ -110,5 +111,10 @@ public class CorpseEntity extends MobEntity implements IEntityAdditionalSpawnDat
     @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Override
+    protected SoundEvent getFallSound(int heightIn) {
+        return null;
     }
 }

@@ -13,7 +13,7 @@ public class MixinEnchantmentHelper {
     @Overwrite
     public static int getKnockbackModifier(LivingEntity player) {
         EffectInstance knockback = player.getActivePotionEffect(HSEffects.KNOCKBACK);
-        if(knockback != null) {
+        if (knockback != null) {
             return knockback.getAmplifier();
         } else {
             return EnchantmentHelper.getMaxEnchantmentLevel(Enchantments.KNOCKBACK, player);
