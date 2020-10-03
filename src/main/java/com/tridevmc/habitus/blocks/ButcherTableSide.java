@@ -12,7 +12,8 @@ public enum ButcherTableSide implements IStringSerializable {
         this.name = name;
     }
 
-    public String getName() {
+    @Override
+    public String getString() {
         return this.name;
     }
 }

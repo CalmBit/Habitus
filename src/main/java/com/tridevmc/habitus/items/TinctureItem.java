@@ -68,7 +68,7 @@ public class TinctureItem extends Item {
                 if(playerentity.getActivePotionEffect(effectInstance.getPotion()) != null) {
                     playerentity.addPotionEffect(new EffectInstance(Effects.NAUSEA, 200, 2));
                     playerentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 2));
-                    playerentity.sendStatusMessage(new TranslationTextComponent("habitus.tincture.rejection").applyTextStyle(TextFormatting.RED), true);
+                    playerentity.sendStatusMessage(new TranslationTextComponent("habitus.tincture.rejection").mergeStyle(TextFormatting.RED), true);
                     return stack;
                 }
             }

@@ -24,6 +24,13 @@
     "block.habitus.slate_brick_slab": "Slate Brick Slab",
     "block.habitus.limestone_brick_slab": "Limestone Brick Slab",
     "block.habitus.marble_brick_slab": "Marble Brick Slab",
+    "block.habitus.dead_slab": "Rotting Slab",
+    "block.habitus.slate_wall": "Slate Wall",
+    "block.habitus.limestone_wall": "Limestone Wall",
+    "block.habitus.marble_wall": "Marble Wall",
+    "block.habitus.slate_brick_wall": "Slate Brick Wall",
+    "block.habitus.limestone_brick_wall": "Limestone Brick Wall",
+    "block.habitus.marble_brick_wall": "Marble Brick Wall",
 
     "item.habitus.stone_cleaver": "Stone Cleaver",
     "item.habitus.iron_cleaver": "Iron Cleaver",
@@ -119,13 +126,17 @@
 
 
     "item.habitus.tincture.effect.water": "Water Tincture",
-    "item.habitus.tincture.effect.fire_aspect": "Tincture of Fire Aspect",
+    "item.habitus.tincture.effect.fire_aspect": "Tincture of Flame",
     "item.habitus.tincture.effect.sharpness": "Tincture of Sharpness",
-    "item.habitus.tincture.effect.knockback": "Tincture of Knockback",
+    "item.habitus.tincture.effect.knockback": "Tincture of Force",
+    "item.habitus.tincture.effect.silk_touch": "Tincture of Silk",
+    "item.habitus.tincture.effect.fortune": "Tincture of Fortune",
 
     "effect.habitus.fire_aspect": "Fire Aspect",
     "effect.habitus.sharpness": "Sharpness",
     "effect.habitus.knockback": "Knockback",
+    "effect.habitus.silk_touch": "Silk Touch",
+    "effect.habitus.fortune": "Fortune",
     "habitus.tincture.potency.0": "",
     "habitus.tincture.potency.1": "II",
     "habitus.tincture.potency.2": "III",
@@ -133,5 +144,7 @@
     "habitus.tincture.potency.4": "V",
     "habitus.tincture.potency.5": "VI",
 
-    "habitus.tincture.rejection": "You feel like drinking this tincture is a bad idea..."
+    "habitus.tincture.rejection": "Your body rejects this tincture at your first sip...",
+
+    "biome.habitus.dead_forest": "Dead Forest"
 }

@@ -57,17 +57,17 @@ public class HSItems {
     public static final Item MUSIC_DISC_NETHER4 = new BackgroundDiscItem(15, HSSounds.MUSIC_DISC_NETHER4, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_nether4");
 
-    public static final Item MUSIC_DISC_CREATIVE1 = new BackgroundDiscItem(3, HSSounds.MUSIC_DISC_CREATIVE1, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE1 = new BackgroundDiscItem(2, HSSounds.MUSIC_DISC_CREATIVE1, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative1");
-    public static final Item MUSIC_DISC_CREATIVE2 = new BackgroundDiscItem(7, HSSounds.MUSIC_DISC_CREATIVE2, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE2 = new BackgroundDiscItem(4, HSSounds.MUSIC_DISC_CREATIVE2, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative2");
-    public static final Item MUSIC_DISC_CREATIVE3 = new BackgroundDiscItem(11, HSSounds.MUSIC_DISC_CREATIVE3, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE3 = new BackgroundDiscItem(6, HSSounds.MUSIC_DISC_CREATIVE3, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative3");
-    public static final Item MUSIC_DISC_CREATIVE4 = new BackgroundDiscItem(15, HSSounds.MUSIC_DISC_CREATIVE4, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE4 = new BackgroundDiscItem(8, HSSounds.MUSIC_DISC_CREATIVE4, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative4");
-    public static final Item MUSIC_DISC_CREATIVE5 = new BackgroundDiscItem(11, HSSounds.MUSIC_DISC_CREATIVE5, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE5 = new BackgroundDiscItem(10, HSSounds.MUSIC_DISC_CREATIVE5, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative5");
-    public static final Item MUSIC_DISC_CREATIVE6 = new BackgroundDiscItem(15, HSSounds.MUSIC_DISC_CREATIVE6, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
+    public static final Item MUSIC_DISC_CREATIVE6 = new BackgroundDiscItem(12, HSSounds.MUSIC_DISC_CREATIVE6, new Item.Properties().maxStackSize(1).rarity(Rarity.RARE).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "music_disc_creative6");
 
     public static final Item ELIXIR = new ElixirItem(new Item.Properties().maxStackSize(1).group(Habitus.HABITUS).maxDamage(3))

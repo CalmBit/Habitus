@@ -17,8 +17,14 @@ public class HSEffects {
             .setRegistryName("habitus", "knockback");
     public static final Effect SILK_TOUCH = new HabitusEffect(EffectType.BENEFICIAL, 0x9c44db)
             .setRegistryName("habitus", "silk_touch");
-    public static  final Effect FORTUNE = new HabitusEffect(EffectType.BENEFICIAL, 0x1ba62d)
+    public static final Effect FORTUNE = new HabitusEffect(EffectType.BENEFICIAL, 0x1ba62d)
             .setRegistryName("habitus", "fortune");
+    public static final Effect AQUA_AFFINITY = new HabitusEffect(EffectType.BENEFICIAL, 0x3293a8)
+            .setRegistryName("habitus", "aqua_affinity");
+    public static final Effect BANE_OF_ARTHROPODS = new HabitusEffect(EffectType.BENEFICIAL, 0x6f26a3)
+            .setRegistryName("habitus", "bane_of_arthropods");
+    public static final Effect SMITE = new HabitusEffect(EffectType.BENEFICIAL, 0x26a39f)
+            .setRegistryName("habitus", "smite");
 
     public static void registerEffects(RegistryEvent.Register<Effect> evt) {
         evt.getRegistry().registerAll(
@@ -26,7 +32,10 @@ public class HSEffects {
             SHARPNESS,
             KNOCKBACK,
             SILK_TOUCH,
-            FORTUNE
+            FORTUNE,
+            AQUA_AFFINITY,
+            BANE_OF_ARTHROPODS,
+            SMITE
         );
     }
 }

@@ -1,36 +1,34 @@
 package com.tridevmc.habitus.world.biome;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import com.tridevmc.habitus.blocks.DeadLogBlock;
 import com.tridevmc.habitus.init.HSBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
-import java.util.function.Function;
 
 public class FallenTreeFeature extends Feature<NoFeatureConfig> {
     private final int minimumLength;
 
-    public FallenTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49878_1_, int minimumLength) {
-        super(p_i49878_1_);
+    public FallenTreeFeature(Codec<NoFeatureConfig> p_i231953_1_,  int minimumLength) {
+        super(p_i231953_1_);
         this.minimumLength = minimumLength;
     }
 
     @Override
-    public boolean place(IWorld worldIn, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
+    public boolean func_241855_a(ISeedReader worldIn, ChunkGenerator gen, Random rand, BlockPos pos, NoFeatureConfig config) {
         int length = minimumLength + rand.nextInt(3);
 
         Direction d = rand.nextBoolean() ?
                 (rand.nextBoolean() ? Direction.NORTH : Direction.SOUTH)
-                    : (rand.nextBoolean() ? Direction.WEST : Direction.EAST);
+                : (rand.nextBoolean() ? Direction.WEST : Direction.EAST);
 
         BlockState LOG_STATE = HSBlocks.DEAD_LOG.getDefaultState().with(DeadLogBlock.AXIS, d.getAxis());
 
@@ -70,11 +68,11 @@ public class FallenTreeFeature extends Feature<NoFeatureConfig> {
         return actual >= minimumLength;
     }
 
-    public static boolean isReplaceable(BlockState state) {
+    private static boolean isReplaceable(BlockState state) {
         return state.getBlock() == Blocks.AIR || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.GRASS_BLOCK || state.getBlock() == Blocks.GRASS;
     }
 
-    public static boolean isSubstrate(BlockState state) {
+    private static boolean isSubstrate(BlockState state) {
         return state.getBlock() == Blocks.GRASS_BLOCK;
     }
 }

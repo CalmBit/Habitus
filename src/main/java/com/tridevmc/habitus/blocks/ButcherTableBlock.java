@@ -43,11 +43,12 @@ public class ButcherTableBlock extends HorizontalBlock {
         BlockState blockstate = worldIn.getBlockState(blockpos);
         if (blockstate.getBlock() == this && blockstate.get(SIDE) != side) {
             worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
+            // Block break effect for the second block
             worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
             if (!worldIn.isRemote && !player.isCreative()) {
                 ItemStack itemstack = player.getHeldItemMainhand();
-                spawnDrops(state, worldIn, pos, (TileEntity)null, player, itemstack);
-                spawnDrops(blockstate, worldIn, blockpos, (TileEntity)null, player, itemstack);
+                spawnDrops(state, worldIn, pos, null, player, itemstack);
+                spawnDrops(blockstate, worldIn, blockpos, null, player, itemstack);
             }
 
             player.addStat(Stats.BLOCK_MINED.get(this));
@@ -92,8 +93,8 @@ public class ButcherTableBlock extends HorizontalBlock {
         if (!worldIn.isRemote) {
             BlockPos blockpos = pos.offset(state.get(HORIZONTAL_FACING).rotateY());
             worldIn.setBlockState(blockpos, state.with(SIDE, ButcherTableSide.RIGHT), 3);
-            worldIn.notifyNeighbors(pos, Blocks.AIR);
-            state.updateNeighbors(worldIn, pos, 3);
+            worldIn.notifyNeighborsOfStateChange(pos, Blocks.AIR);
+            state.updateDiagonalNeighbors(worldIn, blockpos, 3);
         }
 
     }

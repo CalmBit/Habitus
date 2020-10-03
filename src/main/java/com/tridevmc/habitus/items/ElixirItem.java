@@ -11,9 +11,7 @@ import net.minecraft.item.PotionItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -27,9 +25,9 @@ public class ElixirItem extends PotionItem {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(new TranslationTextComponent("habitus.elixir.uses_left")
-                .appendText(String.format("%d", (stack.getMaxDamage() - stack.getDamage())))
-                .applyTextStyle(TextFormatting.YELLOW));
+        TextComponent c = new TranslationTextComponent("habitus.elixir.uses_left");
+        c.getSiblings().add(new StringTextComponent(String.format("%d", (stack.getMaxDamage() - stack.getDamage()))));
+        tooltip.add(c.mergeStyle(TextFormatting.YELLOW));
     }
 
     public ElixirItem(Properties properties) {

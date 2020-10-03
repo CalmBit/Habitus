@@ -7,5 +7,5 @@ public enum VisceraType {
     VISCERA_AQUATIC,
     VISCERA_FLYING,
     VISCERA_GHAST,
-    VISCERA_SHULKER
+    VISCERA_SHULKER,
 }

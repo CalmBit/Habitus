@@ -9,9 +9,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectUtils;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -80,21 +78,25 @@ public class TinctureUtils {
     public static void addTinctureTooltip(ItemStack stack, List<ITextComponent> tooltip, float durationFactor) {
         List<EffectInstance> list = getEffectsFromStack(stack);
         if (list.isEmpty()) {
-            tooltip.add((new TranslationTextComponent("effect.none")).applyTextStyle(TextFormatting.GRAY));
+            tooltip.add((new TranslationTextComponent("effect.none")).mergeStyle(TextFormatting.GRAY));
         } else {
             for(EffectInstance effectinstance : list) {
-                ITextComponent itextcomponent = new TranslationTextComponent(effectinstance.getEffectName());
                 Effect effect = effectinstance.getPotion();
+                TextComponent itextcomponent = new TranslationTextComponent(effectinstance.getEffectName());
+
 
                 if (effectinstance.getAmplifier() > 0) {
-                    itextcomponent.appendText(" ").appendSibling(new TranslationTextComponent("habitus.tincture.potency." + effectinstance.getAmplifier()));
+                    itextcomponent = (TextComponent) itextcomponent.append(new StringTextComponent(" "))
+                                                   .append(new TranslationTextComponent("habitus.tincture.potency." + effectinstance.getAmplifier()));
                 }
 
                 if (effectinstance.getDuration() > 20) {
-                    itextcomponent.appendText(" (").appendText(EffectUtils.getPotionDurationString(effectinstance, durationFactor)).appendText(")");
+                    itextcomponent = (TextComponent) itextcomponent.append(new StringTextComponent(" ("))
+                                  .append(new StringTextComponent(EffectUtils.getPotionDurationString(effectinstance, durationFactor)))
+                                  .append(new StringTextComponent(")"));
                 }
 
-                tooltip.add(itextcomponent.applyTextStyle(effect.getEffectType().getColor()));
+                tooltip.add(itextcomponent.mergeStyle(effect.getEffectType().getColor()));
             }
         }
     }

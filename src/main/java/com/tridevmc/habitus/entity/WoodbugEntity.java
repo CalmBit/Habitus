@@ -1,16 +1,15 @@
 package com.tridevmc.habitus.entity;
 
-import com.tridevmc.habitus.init.HSBiomes;
 import com.tridevmc.habitus.init.HSBlocks;
 import com.tridevmc.habitus.init.HSEntities;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SilverfishBlock;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.SpiderEntity;
-import net.minecraft.entity.passive.TurtleEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
@@ -20,14 +19,11 @@ import net.minecraft.pathfinding.ClimberPathNavigator;
 import net.minecraft.pathfinding.PathNavigator;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.*;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import javax.annotation.Nullable;
+import java.util.Random;
 
 public class WoodbugEntity extends CreatureEntity {
     private static final DataParameter<Byte> CLIMBING = EntityDataManager.createKey(WoodbugEntity.class, DataSerializers.BYTE);
@@ -57,10 +53,8 @@ public class WoodbugEntity extends CreatureEntity {
         this.dataManager.register(NEST_POS, BlockPos.ZERO);
     }
 
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double)0.35F);
+    public static AttributeModifierMap.MutableAttribute getAttributeMap() {
+        return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 4.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.35F);
     }
 
     @Override
@@ -89,11 +83,10 @@ public class WoodbugEntity extends CreatureEntity {
                 nbt.getInt("NestPosZ")));
     }
 
-    @Nullable
     @Override
-    public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficulty, SpawnReason spawnReason, @Nullable ILivingEntityData entityData, @Nullable CompoundNBT nbt) {
-        this.setNest(new BlockPos(this));
-        return super.onInitialSpawn(worldIn, difficulty, spawnReason, entityData, nbt);
+    public ILivingEntityData onInitialSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag) {
+        this.setNest(new BlockPos(this.getPositionVec()));
+        return super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
     public void setNest(BlockPos pos) {
@@ -158,6 +151,13 @@ public class WoodbugEntity extends CreatureEntity {
                 this.getNest().getZ() == this.getPosition().getZ();
     }*/
 
+
+    public static boolean canWoodbugSpawn(EntityType<? extends WoodbugEntity> type, IWorld worldIn, SpawnReason reason, BlockPos posIn, Random randIn) {
+        return  ((worldIn.getBlockState(posIn.down()).getBlock() == Blocks.GRASS_BLOCK) ||
+                (worldIn.getBlockState(posIn.down()).getBlock() == Blocks.DIRT) ||
+                (worldIn.getBlockState(posIn.down()).getBlock() == Blocks.PODZOL)) && worldIn.getLightSubtracted(posIn, 0) > 8;
+    }
+
     public boolean isOnLadder() {
         return /*!atNest() &&*/ this.isBesideClimbableBlock();
     }
@@ -182,7 +182,7 @@ public class WoodbugEntity extends CreatureEntity {
     private class HideDuringDayGoal extends Goal {
         private WoodbugEntity entity;
         private BlockPos nestPos;
-        private Vec3d trueNest;
+        private Vector3d trueNest;
         private boolean pathingFailed = false;
         private double speed;
 
@@ -229,7 +229,7 @@ public class WoodbugEntity extends CreatureEntity {
                     boolean res = this.entity.getNavigator().tryMoveToXYZ(trueNest.x, trueNest.y, trueNest.z, this.speed);
                     this.pathingFailed = res;
                 } else {
-                    Vec3d newPosition = RandomPositionGenerator.findRandomTargetBlockTowards(this.entity, 16, 3, this.trueNest);
+                    Vector3d newPosition = RandomPositionGenerator.findRandomTargetBlockTowards(this.entity, 16, 3, this.trueNest);
                     if (newPosition == null) {
                         this.pathingFailed = true;
                         return;
@@ -241,7 +241,7 @@ public class WoodbugEntity extends CreatureEntity {
 
         protected void updateNestPosition() {
             this.nestPos = this.entity.getNest();
-            this.trueNest = new Vec3d(nestPos.getX() + 0.5, nestPos.getY() + 0.5, nestPos.getZ() + 0.5);
+            this.trueNest = new Vector3d(nestPos.getX() + 0.5, nestPos.getY() + 0.5, nestPos.getZ() + 0.5);
         }
 
         @Override
