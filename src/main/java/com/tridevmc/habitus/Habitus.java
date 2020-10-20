@@ -1,5 +1,6 @@
 package com.tridevmc.habitus;
 
+import com.tridevmc.habitus.client.CommonProxy;
 import com.tridevmc.habitus.init.*;
 import com.tridevmc.habitus.tinctures.TinctureEffect;
 import com.tridevmc.habitus.world.biome.BiomeFixer;
@@ -34,9 +35,10 @@ public class Habitus
 
     private static final ResourceLocation TINCTURE_REGISTRY_NAME = new ResourceLocation(MODID, "tinctures");
 
-    public static final com.tridevmc.habitus.client.CommonProxy PROXY = DistExecutor.safeRunForDist(()->com.tridevmc.habitus.client.ClientProxy::new, ()->com.tridevmc.habitus.client.CommonProxy::new);
+    public static final CommonProxy PROXY = DistExecutor.safeRunForDist(()->com.tridevmc.habitus.client.ClientProxy::new, ()->CommonProxy::new);
 
     public Habitus() {
+        MinecraftForge.EVENT_BUS.register(PROXY);
         FMLJavaModLoadingContext.get().getModEventBus().register(PROXY);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
