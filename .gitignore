@@ -22,7 +22,7 @@ eclipse
 run
 
 # Files from Forge MDK
-forge*changelog.txt
+changelog.txt
 
 .DS_Store
 **/.DS_Store

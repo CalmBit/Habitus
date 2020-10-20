@@ -74,10 +74,6 @@ public class HSItems {
             .setRegistryName(Habitus.MODID, "elixir");
     public static final Item ELIXIR_BOTTLE = new ElixirBottleItem(new Item.Properties().maxStackSize(16).group(Habitus.HABITUS))
             .setRegistryName(Habitus.MODID, "elixir_bottle");
-    public static final Item TINCTURE = new TinctureItem(new Item.Properties().maxStackSize(1).group(Habitus.HABITUS))
-            .setRegistryName(Habitus.MODID, "tincture");
-    public static final Item TINCTURE_BOTTLE = new TinctureBottleItem(new Item.Properties().maxStackSize(16).group(Habitus.HABITUS))
-            .setRegistryName(Habitus.MODID, "tincture_bottle");
 
     public static final Item PEAT_BALL = new PeatBallItem()
             .setRegistryName(Habitus.MODID, "peat_ball");
@@ -127,8 +123,6 @@ public class HSItems {
 
                 ELIXIR,
                 ELIXIR_BOTTLE,
-                TINCTURE,
-                TINCTURE_BOTTLE,
 
                 PEAT_BALL,
                 PEAT_SHEET,

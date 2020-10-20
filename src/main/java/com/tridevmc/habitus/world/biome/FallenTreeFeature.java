@@ -73,6 +73,6 @@ public class FallenTreeFeature extends Feature<NoFeatureConfig> {
     }
 
     private static boolean isSubstrate(BlockState state) {
-        return state.getBlock() == Blocks.GRASS_BLOCK;
+        return state.getBlock() == Blocks.PODZOL;
     }
 }

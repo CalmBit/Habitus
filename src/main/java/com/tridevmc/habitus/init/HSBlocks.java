@@ -81,7 +81,12 @@ public class HSBlocks {
             .setRegistryName(Habitus.MODID, "tincture_stand");
     public static final Block CREEPER_NEST = new NestBlock()
             .setRegistryName(Habitus.MODID, "creeper_nest");
-
+    public static final Block TINCTURE_CAULDRON = new TinctureCauldronBlock()
+            .setRegistryName(Habitus.MODID, "tincture_cauldron");
+    public static final Block TROUGH = new TroughBlock()
+            .setRegistryName(Habitus.MODID, "trough");
+    public static final Block NEST_BOX = new NestBoxBlock()
+            .setRegistryName(Habitus.MODID, "nest_box");
 
     public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties()
             .maxStackSize(1)
@@ -123,7 +128,10 @@ public class HSBlocks {
                 MARBLE_BRICK_WALL,
                 DEAD_SLAB,
                 TINCTURE_STAND,
-                CREEPER_NEST
+                CREEPER_NEST,
+                TINCTURE_CAULDRON,
+                TROUGH,
+                NEST_BOX
         );
 
         RenderTypeLookup.setRenderLayer(TINCTURE_STAND, RenderType.getCutout());
@@ -164,7 +172,10 @@ public class HSBlocks {
                 createBlockItem(MARBLE_BRICK_WALL),
                 createBlockItem(DEAD_SLAB),
                 createBlockItem(TINCTURE_STAND),
-                createBlockItem(CREEPER_NEST)
+                createBlockItem(CREEPER_NEST),
+                createBlockItem(TINCTURE_CAULDRON),
+                createBlockItem(TROUGH),
+                createBlockItem(NEST_BOX)
         );
     }
 
