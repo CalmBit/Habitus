@@ -4,12 +4,8 @@ import com.tridevmc.habitus.Habitus;
 import com.tridevmc.habitus.blocks.*;
 import com.tridevmc.habitus.items.PeatBlockItem;
 import net.minecraft.block.Block;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 
 public class HSBlocks {
@@ -88,6 +84,21 @@ public class HSBlocks {
     public static final Block NEST_BOX = new NestBoxBlock()
             .setRegistryName(Habitus.MODID, "nest_box");
 
+    public static final Block DUNGEON_TILE = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile");
+    public static final Block DUNGEON_TILE_BLUE = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_blue");
+    public static final Block DUNGEON_TILE_GREEN = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_green");
+    public static final Block DUNGEON_TILE_LIMESTONE = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_limestone");
+    public static final Block DUNGEON_TILE_MARBLE = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_marble");
+    public static final Block DUNGEON_TILE_PINK = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_pink");
+    public static final Block DUNGEON_TILE_SLATE = new DungeonTileBlock()
+            .setRegistryName(Habitus.MODID, "dungeon_tile_slate");
+
     public static final Item ITEM_BUTCHER_TABLE = createBlockItem(BUTCHER_TABLE, new Item.Properties()
             .maxStackSize(1)
             .group(Habitus.HABITUS));
@@ -131,10 +142,17 @@ public class HSBlocks {
                 CREEPER_NEST,
                 TINCTURE_CAULDRON,
                 TROUGH,
-                NEST_BOX
-        );
+                NEST_BOX,
+                DUNGEON_TILE,
+                DUNGEON_TILE_BLUE,
+                DUNGEON_TILE_GREEN,
+                DUNGEON_TILE_PINK,
+                DUNGEON_TILE_MARBLE,
+                DUNGEON_TILE_LIMESTONE,
+                DUNGEON_TILE_SLATE
+            );
 
-        RenderTypeLookup.setRenderLayer(TINCTURE_STAND, RenderType.getCutout());
+        Habitus.PROXY.adjustBlockRenderTypes();
     }
     public static void registerItemBlocks(RegistryEvent.Register<Item> evt) {
         evt.getRegistry().registerAll(
@@ -175,7 +193,14 @@ public class HSBlocks {
                 createBlockItem(CREEPER_NEST),
                 createBlockItem(TINCTURE_CAULDRON),
                 createBlockItem(TROUGH),
-                createBlockItem(NEST_BOX)
+                createBlockItem(NEST_BOX),
+                createBlockItem(DUNGEON_TILE),
+                createBlockItem(DUNGEON_TILE_BLUE),
+                createBlockItem(DUNGEON_TILE_GREEN),
+                createBlockItem(DUNGEON_TILE_PINK),
+                createBlockItem(DUNGEON_TILE_MARBLE),
+                createBlockItem(DUNGEON_TILE_LIMESTONE),
+                createBlockItem(DUNGEON_TILE_SLATE)
         );
     }
 

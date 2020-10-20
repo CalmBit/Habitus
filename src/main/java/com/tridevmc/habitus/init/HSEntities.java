@@ -65,8 +65,6 @@ public class HSEntities {
     }
 
     public static void registerRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(WASTED, WastedRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(WOODBUG, WoodbugRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(BABY_SKELETON, SkeletonRenderer::new);
+
     }
 }

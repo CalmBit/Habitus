@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "habitus:block/dungeon_tile_blue"
+  }
+}

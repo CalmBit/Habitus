@@ -31,6 +31,13 @@
     "block.habitus.slate_brick_wall": "Slate Brick Wall",
     "block.habitus.limestone_brick_wall": "Limestone Brick Wall",
     "block.habitus.marble_brick_wall": "Marble Brick Wall",
+    "block.habitus.dungeon_tile": "Dungeon Tile",
+    "block.habitus.dungeon_tile_blue": "Blue Dungeon Tile",
+    "block.habitus.dungeon_tile_green": "Green Dungeon Tile",
+    "block.habitus.dungeon_tile_pink": "Pink Dungeon Tile",
+    "block.habitus.dungeon_tile_limestone": "Limestone Dungeon Tile",
+    "block.habitus.dungeon_tile_marble": "Marble Dungeon Tile",
+    "block.habitus.dungeon_tile_slate": "Slate Dungeon Tile",
 
     "item.habitus.stone_cleaver": "Stone Cleaver",
     "item.habitus.iron_cleaver": "Iron Cleaver",
