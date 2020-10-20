@@ -2,9 +2,7 @@ package com.tridevmc.habitus.init;
 
 import com.tridevmc.habitus.Habitus;
 import com.tridevmc.habitus.items.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemTier;
-import net.minecraft.item.Rarity;
+import net.minecraft.item.*;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.event.RegistryEvent;
 
@@ -84,6 +82,13 @@ public class HSItems {
     public static final Item PEAT_BRIQUETTE = new PeatBriquetteItem()
             .setRegistryName(Habitus.MODID, "peat_briquette");
 
+    public static final Item WASTED_SPAWN_EGG = new SpawnEggItem(HSEntities.WASTED, 0xFF161616, 0xFFFFFFFF, new Item.Properties().group(ItemGroup.MISC))
+            .setRegistryName(Habitus.MODID, "wasted_spawn_egg");
+    public static final Item WOODBUG_SPAWN_EGG = new SpawnEggItem(HSEntities.WOODBUG, 0xFF513733, 0xFF261d19, new Item.Properties().group(ItemGroup.MISC))
+            .setRegistryName(Habitus.MODID, "woodbug_spawn_egg");
+    public static final Item BABY_SKELETON_SPAWN_EGG = new SpawnEggItem(HSEntities.BABY_SKELETON, 12698049, 4802889, new Item.Properties().group(ItemGroup.MISC))
+            .setRegistryName(Habitus.MODID, "baby_skeleton_spawn_egg");
+
     public static void registerItems(RegistryEvent.Register<Item> evt) {
         evt.getRegistry().registerAll(
                 STONE_CLEAVER,
@@ -127,7 +132,11 @@ public class HSItems {
                 PEAT_BALL,
                 PEAT_SHEET,
                 UNFIRED_PEAT_BRIQUETTE,
-                PEAT_BRIQUETTE
+                PEAT_BRIQUETTE,
+
+                WASTED_SPAWN_EGG,
+                WOODBUG_SPAWN_EGG,
+                BABY_SKELETON_SPAWN_EGG
         );
     }
 }

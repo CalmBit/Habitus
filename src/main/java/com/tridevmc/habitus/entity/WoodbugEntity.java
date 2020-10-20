@@ -53,7 +53,7 @@ public class WoodbugEntity extends CreatureEntity {
         this.dataManager.register(NEST_POS, BlockPos.ZERO);
     }
 
-    public static AttributeModifierMap.MutableAttribute getAttributeMap() {
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 4.0D).createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.35F);
     }
 
